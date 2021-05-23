@@ -6,7 +6,7 @@ import { LegendStylePropsState } from "../models/legendStyleState";
 import { ReducerAction } from "../models/reducerAction";
 
 
-export const defaultLegendStyleState: LegendStylePropsState = {
+const defaultLegendStyleState: LegendStylePropsState = {
     fontFamily: "sans-serif",
     fontSize: 16,
     isUppercase: false,
