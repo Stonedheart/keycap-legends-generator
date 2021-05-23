@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import Keycap from './components/keycap/Keycap';
+import { FlexPosition } from './models/flexPosition';
 
 const alphanumericKeycapLegends = "1234567890qwertyuiopasdfghjklzxcvbnm";
 const fontFamilyNames = [
@@ -53,18 +55,14 @@ const fontFamilyNames = [
     'Wide-Wake-Black',
 ];
 
-const flexPositions = [
-    "flex-start",
-    "center",
-    "flex-end",
-];
+const defaultFontSizeValue = 16;
 
 const App = () => {
     const [fontFamilyName, setFontFamilyName] = useState("");
-    const [fontSize, setFontSize] = useState(16);
+    const [fontSize, setFontSize] = useState(defaultFontSizeValue);
     const [isUppercase, setIsUppercase] = useState(false);
-    const [justifyLegend, setJustifyLegend] = useState("");
-    const [alignLegend, setAlignLegend] = useState("");
+    const [justifyLegend, setJustifyLegend] = useState<FlexPosition>(FlexPosition.flexStart);
+    const [alignLegend, setAlignLegend] = useState<FlexPosition>(FlexPosition.flexStart);
 
     return (
         <div className="App">
@@ -108,6 +106,7 @@ const App = () => {
                             style={{
                                 marginBottom: 8
                             }}
+                            value={fontSize}
                         />
                         <div
                             style={{
@@ -130,8 +129,8 @@ const App = () => {
                                 marginTop: 8,
                             }}
                         >
-                            {flexPositions.map((horizontal, indexH) => (
-                                flexPositions.map((vertical, indexV) => (
+                            {Object.values(FlexPosition).map((horizontal, indexH) => (
+                                Object.values(FlexPosition).map((vertical, indexV) => (
                                     <div
                                         key={`${indexH}${indexV}`}
                                         onClick={() => {
@@ -174,19 +173,15 @@ const App = () => {
                 >
                     <div className="Container">
                         {alphanumericKeycapLegends.split("").map((legend, index) =>
-                            <div
+                            <Keycap
                                 key={index}
-                                className="Keycap"
-                                style={{
-                                    fontFamily: `${fontFamilyName}`,
-                                    fontSize: fontSize,
-                                    textTransform: isUppercase ? "uppercase" : "lowercase",
-                                    justifyContent: justifyLegend,
-                                    alignItems: alignLegend
-                                }}
-                            >
-                                {legend}
-                            </div>
+                                fontFamily={fontFamilyName}
+                                fontSize={fontSize}
+                                isUppercase={isUppercase}
+                                justifyLegend={justifyLegend}
+                                alignLegend={alignLegend}
+                                legend={legend}
+                            />
                         )}
                     </div>
 
