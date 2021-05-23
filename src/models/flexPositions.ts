@@ -1,4 +1,4 @@
-export enum FlexPosition {
+export enum FlexPositions {
     flexStart = "flex-start",
     center = "center",
     flexEnd = "flex-end"
