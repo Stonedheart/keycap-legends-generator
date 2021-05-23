@@ -1,0 +1,5 @@
+.keycaps-container {
+    max-width: 566px;
+    display: flex;
+    flex-wrap: wrap;
+}
