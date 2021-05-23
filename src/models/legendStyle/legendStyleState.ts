@@ -1,4 +1,4 @@
-import { FlexPositions } from "./flexPositions";
+import { FlexPositions } from "../shared/flexPositions";
 
 export interface LegendStylePropsState {
     fontFamily: string,

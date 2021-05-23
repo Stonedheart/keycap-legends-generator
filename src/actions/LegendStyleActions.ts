@@ -1,5 +1,5 @@
-import { FlexPositions } from "../models/flexPositions";
-import { LegendStyleActions } from "../models/legendStyleActions";
+import { FlexPositions } from "../models/shared/flexPositions";
+import { LegendStyleActions } from "../models/legendStyle/legendStyleActions";
 
 export const setFontFamily = (payload: string) => ({ type: LegendStyleActions.setFontFamily, payload });
 export const setFontSize = (payload: string) => ({ type: LegendStyleActions.setFontSize, payload });

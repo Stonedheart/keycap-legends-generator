@@ -1,4 +1,4 @@
-import { WithChildren } from '../../models/props';
+import { WithChildren } from '../../models/shared/props';
 
 import "./Column.css";
 import "../../App.css";

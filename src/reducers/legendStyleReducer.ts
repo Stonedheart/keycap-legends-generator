@@ -1,9 +1,9 @@
 import { useReducer } from "react";
-import { FlexPositions } from "../models/flexPositions";
-import { LegendStyleActions } from "../models/legendStyleActions";
-import { LegendStyleProp } from "../models/legendStyleProp";
-import { LegendStylePropsState } from "../models/legendStyleState";
-import { ReducerAction } from "../models/reducerAction";
+import { FlexPositions } from "../models/shared/flexPositions";
+import { LegendStylePropsState } from "../models/legendStyle/legendStyleState";
+import { ReducerAction } from "../models/shared/reducerAction";
+import { LegendStyleActions } from "../models/legendStyle/legendStyleActions";
+import { LegendStyleProp } from "../models/legendStyle/legendStyleProp";
 
 
 const defaultLegendStyleState: LegendStylePropsState = {

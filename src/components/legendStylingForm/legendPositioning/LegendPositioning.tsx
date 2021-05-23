@@ -1,4 +1,4 @@
-import { FlexPositions } from '../../../models/flexPositions';
+import { FlexPositions } from '../../../models/shared/flexPositions';
 
 import "./LegendPositioning.css";
 

@@ -7,7 +7,7 @@ import {
     setIsUppercase
 } from '../../actions/LegendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
-import { FlexPositions } from '../../models/flexPositions';
+import { FlexPositions } from '../../models/shared/flexPositions';
 import LegendPositioning from './legendPositioning/LegendPositioning';
 
 import "./LegendsStylingForm.css";
