@@ -53,22 +53,18 @@ const fontFamilyNames = [
     'Wide-Wake-Black',
 ];
 
-const horizontalPositions = [
-    "top",
+const flexPositions = [
+    "flex-start",
     "center",
-    "bottom",
-];
-const verticalPositions = [
-    "left",
-    "center",
-    "right",
+    "flex-end",
 ];
 
 const App = () => {
     const [fontFamilyName, setFontFamilyName] = useState("");
     const [fontSize, setFontSize] = useState(16);
     const [isUppercase, setIsUppercase] = useState(false);
-    const [legendPosition, setLegendPosition] = useState("");
+    const [justifyLegend, setJustifyLegend] = useState("");
+    const [alignLegend, setAlignLegend] = useState("");
 
     return (
         <div className="App">
@@ -126,25 +122,42 @@ const App = () => {
                         </label>
                         <div
                             style={{
-                                width: 104,
+                                width: 84,
                                 display: "flex",
+                                flexDirection: "row",
                                 flexWrap: "wrap",
                                 fontSize: 8,
-                                marginTop: 8
+                                marginTop: 8,
                             }}
                         >
-                            {horizontalPositions.map((horizontal, indexH) => (
-                                verticalPositions.map((vertical, indexV) => (
+                            {flexPositions.map((horizontal, indexH) => (
+                                flexPositions.map((vertical, indexV) => (
                                     <div
                                         key={`${indexH}${indexV}`}
-                                        onClick={() => setLegendPosition(`${horizontal}-${vertical}`)}
+                                        onClick={() => {
+                                            setJustifyLegend(vertical);
+                                            setAlignLegend(horizontal);
+                                        }}
                                         style={{
                                             border: "solid 1px black",
                                             padding: 4,
+                                            width: 18,
+                                            height: 18,
                                             cursor: "pointer",
+                                            display: "flex",
+                                            justifyContent: vertical,
+                                            alignItems: horizontal,
                                         }}
                                     >
-                                        {vertical}
+                                        <div
+                                            style={{
+                                                background: "black",
+                                                borderRadius: "50%",
+                                                width: 5,
+                                                height: 5
+                                            }}
+                                        >
+                                        </div>
                                     </div>
                                 ))
                             ))}
@@ -167,7 +180,9 @@ const App = () => {
                                 style={{
                                     fontFamily: `${fontFamilyName}`,
                                     fontSize: fontSize,
-                                    textTransform: isUppercase ? "uppercase" : "lowercase"
+                                    textTransform: isUppercase ? "uppercase" : "lowercase",
+                                    justifyContent: justifyLegend,
+                                    alignItems: alignLegend
                                 }}
                             >
                                 {legend}
