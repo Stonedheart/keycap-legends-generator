@@ -1,0 +1,254 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+    font-family: 'Beyond';
+    src: local('Beyond'), url(./fonts/Beyond.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'BulletInYourHead';
+    src: local('BulletInYourHead'), url(./fonts/BulletInYourHead.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'D3Digitalism';
+    src: local('D3Digitalism'), url(./fonts/D3Digitalism.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'D3Digitalism-Italic';
+    src: local('D3Digitalism-Italic'), url(./fonts/D3DigitalismI.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck';
+    src: local('DiscoDuck'), url(./fonts/discoduck.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Italic';
+    src: local('DiscoDuck-Italic'), url(./fonts/discoduckital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Left-Italic';
+    src: local('DiscoDuck-Left-Italic'), url(./fonts/discoduckleft.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-3d';
+    src: local('DiscoDuck-3d'), url(./fonts/discoduck3d.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-3d-Italic';
+    src: local('DiscoDuck-3d-Italic'), url(./fonts/discoduck3dital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Chrome';
+    src: local('DiscoDuck-Chrome'), url(./fonts/discoduckchrome.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Chrome-Italic';
+    src: local('DiscoDuck-Chrome-Italic'), url(./fonts/discoduckchromeital.ttf) format('truetype');
+}
+
+
+@font-face {
+    font-family: 'DiscoDuck-Condensed';
+    src: local('DiscoDuck-Condensed'), url(./fonts/discoduckcond.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Condensed-Italic';
+    src: local('DiscoDuck-Condensed-Italic'), url(./fonts/discoduckcondital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Expanded';
+    src: local('DiscoDuck-Expanded'), url(./fonts/discoduckexpand.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Expanded-Italic';
+    src: local('DiscoDuck-Expanded-Italic'), url(./fonts/discoduckexpandital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Gradient';
+    src: local('DiscoDuck-Gradient'), url(./fonts/discoduckgrad.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Gradient-Italic';
+    src: local('DiscoDuck-Gradient-Italic'), url(./fonts/discoduckgradital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Halftone';
+    src: local('DiscoDuck-Halftone'), url(./fonts/discoduckhalf.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Halftone-Italic';
+    src: local('DiscoDuck-Halftone-Italic'), url(./fonts/discoduckhalfital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Outline';
+    src: local('DiscoDuck-Outline'), url(./fonts/discoduckout.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Outline-Italic';
+    src: local('DiscoDuck-Halftone-Italic'), url(./fonts/discoduckoutital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DiscoDuck-Semi-Italic';
+    src: local('DiscoDuck-Semi-Italic'), url(./fonts/discoducksemital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Friday13th-Bonus';
+    src: local('Friday13th-Bonus'), url(./fonts/Friday13\ Bonus\ NFI.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Friday13th-SH';
+    src: local('Friday13th-SH'), url(./fonts/Friday13SH.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Friday13th-v12';
+    src: local('Friday13th-v12'), url(./fonts/Friday13v12.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice';
+    src: local('Justice'), url(./fonts/justice.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-3d';
+    src: local('Justice-3d'), url(./fonts/justice3d.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Academy';
+    src: local('Justice-Academy'), url(./fonts/justiceacad.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Chrome';
+    src: local('Justice-Chrome'), url(./fonts/justicechrome.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Condensed';
+    src: local('Justice-Condensed'), url(./fonts/justicecond.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Condensed-Outline';
+    src: local('Justice-Condensed-Outline'), url(./fonts/justicecondout.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Condensed-Straight';
+    src: local('Justice-Condensed-Straight'), url(./fonts/justicecondstraight.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Expanded';
+    src: local('Justice-Expanded'), url(./fonts/justiceexpand.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Expanded-Outline';
+    src: local('Justice-Expanded-Outline'), url(./fonts/justiceexpandout.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Expanded-Straight';
+    src: local('Justice-Expanded-Straight'), url(./fonts/justiceexpandstraight.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Gradient';
+    src: local('Justice-Gradient'), url(./fonts/justicegrad.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Gradient-Outline';
+    src: local('Justice-Gradient-Outline'), url(./fonts/justicegradout.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Halftone';
+    src: local('Justice-Halftone'), url(./fonts/justicehalf.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Italic';
+    src: local('Justice-Italic'), url(./fonts/justiceital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Laser';
+    src: local('Justice-Laser'), url(./fonts/justicelaser.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Italic-Left';
+    src: local('Justice-Italic-Left'), url(./fonts/justicehalf.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Outline';
+    src: local('Justice-Outline'), url(./fonts/justiceout.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Outline-Italic';
+    src: local('Justice-Outline-Italic'), url(./fonts/justiceoutital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Semi-Italic';
+    src: local('Justice-Semi-Italic'), url(./fonts/justicesemital.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Outline-Straight';
+    src: local('Justice-Outline-Straight'), url(./fonts/justiceoutstraight.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Justice-Straight';
+    src: local('Justice-Straight'), url(./fonts/justicestraight.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Wide-Wake';
+    src: local('Wide-Wake'), url(./fonts/WIDEAWAKE.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Wide-Wake-Black';
+    src: local('Wide-Wake-Black'), url(./fonts/WIDEAWAKEBLACK.ttf) format('truetype');
+}
