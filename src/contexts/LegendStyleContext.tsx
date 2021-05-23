@@ -1,19 +1,31 @@
-import { createContext, useContext } from "react";
+import { createContext, Dispatch, useContext } from "react";
 import { WithChildren } from "../models/props";
 import { LegendStylePropsState } from "../models/legendStyleState";
+import { LegendStyleActions } from "../models/legendStyleActions";
+import { LegendStyleProp } from "../models/legendStyleProp";
+import { ReducerAction } from "../models/reducerAction";
+import { useLegendStyleReducer } from "../reducers/legendStyleReducer";
 
-
-const LegendStyleContext = createContext({} as LegendStylePropsState);
-
-interface Props extends WithChildren {
-    state: LegendStylePropsState,
+interface LegendStyleContextValue extends LegendStylePropsState {
+    dispatch: Dispatch<ReducerAction<LegendStyleActions, LegendStyleProp>>,
 }
 
-const LegendStyleContextProvider = ({ children, state }: Props) => (
-    <LegendStyleContext.Provider value={state}>
-        {children}
-    </LegendStyleContext.Provider>
-);
+const LegendStyleContext = createContext({} as LegendStyleContextValue);
+
+const LegendStyleContextProvider = ({ children }: WithChildren) => {
+    const [legendStyleState, dispatch] = useLegendStyleReducer();
+
+    return (
+        <LegendStyleContext.Provider
+            value={{
+                ...legendStyleState,
+                dispatch
+            }}
+        >
+            {children}
+        </LegendStyleContext.Provider>
+    );
+};
 
 export default LegendStyleContextProvider;
 

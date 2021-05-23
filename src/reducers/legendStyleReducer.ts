@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import { FlexPositions } from "../models/flexPositions";
 import { LegendStyleActions } from "../models/legendStyleActions";
+import { LegendStyleProp } from "../models/legendStyleProp";
 import { LegendStylePropsState } from "../models/legendStyleState";
 import { ReducerAction } from "../models/reducerAction";
 
@@ -12,9 +13,6 @@ export const defaultLegendStyleState: LegendStylePropsState = {
     alignLegend: FlexPositions.flexStart,
     justifyLegend: FlexPositions.flexStart,
 }
-
-type LegendStyleProp = string | boolean | FlexPositions;
-
 
 const legendStyleReducer = (
     state: LegendStylePropsState,
