@@ -1,24 +1,20 @@
-import React from 'react';
-import { FlexPosition } from '../../models/flexPosition';
+import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
 import './Keycap.css';
 
+
 interface Props {
-    fontFamily: string,
-    fontSize: number,
-    isUppercase: boolean,
-    justifyLegend: FlexPosition,
-    alignLegend: FlexPosition,
     legend: string
 }
 
-const Keycap = ({
-    fontFamily,
-    fontSize,
-    isUppercase,
-    justifyLegend,
-    alignLegend,
-    legend
-}: Props) => {
+const Keycap = ({ legend }: Props) => {
+    const {
+        fontFamily,
+        fontSize,
+        isUppercase,
+        justifyLegend,
+        alignLegend,
+    } = useLegendStyleContext();
+
     return (
         <div
             className="keycap"

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import './App.css';
-import Keycap from './components/keycap/Keycap';
-import { FlexPosition } from './models/flexPosition';
+import LegendStyleContextProvider from './contexts/LegendStyleContext';
+import { useLegendStyleReducer } from './reducers/legendStyleReducer';
+import Keycaps from './components/keycaps/Keycaps';
+import Column from './components/column/Column';
+import { FlexPositions } from './models/flexPositions';
+import { LegendStyleActions } from './models/legendStyleActions';
 
-const alphanumericKeycapLegends = "1234567890qwertyuiopasdfghjklzxcvbnm";
+import './App.css';
+
 const fontFamilyNames = [
     'Beyond',
     'BulletInYourHead',
@@ -55,139 +58,97 @@ const fontFamilyNames = [
     'Wide-Wake-Black',
 ];
 
-const defaultFontSizeValue = 16;
-
 const App = () => {
-    const [fontFamilyName, setFontFamilyName] = useState("");
-    const [fontSize, setFontSize] = useState(defaultFontSizeValue);
-    const [isUppercase, setIsUppercase] = useState(false);
-    const [justifyLegend, setJustifyLegend] = useState<FlexPosition>(FlexPosition.flexStart);
-    const [alignLegend, setAlignLegend] = useState<FlexPosition>(FlexPosition.flexStart);
+    const [legendStyleState, dispatch] = useLegendStyleReducer();
 
     return (
-        <div className="App">
-            <div
-                style={{
-                    display: "flex",
-                    height: "100%"
-                }}
-            >
-                <div
-                    style={{
-                        display: "flex",
-                        width: "50%",
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}
-                >
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                        }}
-                    >
-
-                        <label htmlFor="fontFamily">Provide font size: </label>
-                        <select
-                            id="fontFamily"
-                            style={{
-                                marginBottom: 8
-                            }}
-                        >
-                            {fontFamilyNames.map(name =>
-                                <option onClick={() => { setFontFamilyName(name) }}>{name}</option>
+        <LegendStyleContextProvider state={legendStyleState}>
+            <div className="app">
+                <div className="app-container">
+                    <Column>
+                        <div style={{display: "flex", flexDirection: "column"}}>
+                            <label htmlFor="fontFamily">Provide font size: </label>
+                            <select
+                                id="fontFamily"
+                                style={{
+                                    marginBottom: 8
+                                }}
+                            >
+                                {fontFamilyNames.map(name =>
+                                    <option onClick={() => { dispatch({type: LegendStyleActions.setFontFamily, payload: name}) }}>{name}</option>
                                 )}
-                        </select>
-                        <label htmlFor="fontSize">Provide font size: </label>
-                        <input
-                            type="number"
-                            id="fontSize"
-                            onChange={(e) => setFontSize(parseInt(e.target.value))}
-                            style={{
-                                marginBottom: 8
-                            }}
-                            value={fontSize}
-                        />
-                        <div
-                            style={{
-                                marginBottom: 8
-                            }}
-                        >
-                            <label htmlFor="uppercase">Make upppercase</label>
-                            <input type="checkbox" id="uppercase" onChange={(e) => setIsUppercase(e.target.checked)} />
-                        </div>
-                        <label htmlFor="legendPosition">
-                            Legend position:
-                        </label>
-                        <div
-                            style={{
-                                width: 84,
-                                display: "flex",
-                                flexDirection: "row",
-                                flexWrap: "wrap",
-                                fontSize: 8,
-                                marginTop: 8,
-                            }}
-                        >
-                            {Object.values(FlexPosition).map((horizontal, indexH) => (
-                                Object.values(FlexPosition).map((vertical, indexV) => (
-                                    <div
-                                        key={`${indexH}${indexV}`}
-                                        onClick={() => {
-                                            setJustifyLegend(vertical);
-                                            setAlignLegend(horizontal);
-                                        }}
-                                        style={{
-                                            border: "solid 1px black",
-                                            padding: 4,
-                                            width: 18,
-                                            height: 18,
-                                            cursor: "pointer",
-                                            display: "flex",
-                                            justifyContent: vertical,
-                                            alignItems: horizontal,
-                                        }}
-                                    >
+                            </select>
+                            <label htmlFor="fontSize">Provide font size: </label>
+                            <input
+                                type="number"
+                                id="fontSize"
+                                onChange={(e) => dispatch({type: LegendStyleActions.setFontSize, payload: e.target.value})}
+                                style={{
+                                    marginBottom: 8
+                                }}
+                                value={legendStyleState.fontSize}
+                            />
+                            <div
+                                style={{
+                                    marginBottom: 8
+                                }}
+                            >
+                                <label htmlFor="uppercase">Make upppercase</label>
+                                <input type="checkbox" id="uppercase" onChange={(e) => { dispatch({type: LegendStyleActions.setIsUppercase, payload: e.target.checked}) }} />
+                            </div>
+                            <label htmlFor="legendPosition">
+                                Legend position:
+                            </label>
+                            <div
+                                style={{
+                                    width: 84,
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    flexWrap: "wrap",
+                                    fontSize: 8,
+                                    marginTop: 8,
+                                }}
+                            >
+                                {Object.values(FlexPositions).map((horizontal, indexH) => (
+                                    Object.values(FlexPositions).map((vertical, indexV) => (
                                         <div
+                                            key={`${indexH}${indexV}`}
+                                            onClick={() => {
+                                                dispatch({type: LegendStyleActions.setJustifyLegend, payload: vertical});
+                                                dispatch({type: LegendStyleActions.setAlignLegend, payload: horizontal});
+                                            }}
                                             style={{
-                                                background: "black",
-                                                borderRadius: "50%",
-                                                width: 5,
-                                                height: 5
+                                                border: "solid 1px black",
+                                                padding: 4,
+                                                width: 18,
+                                                height: 18,
+                                                cursor: "pointer",
+                                                display: "flex",
+                                                justifyContent: vertical,
+                                                alignItems: horizontal,
                                             }}
                                         >
+                                            <div
+                                                style={{
+                                                    background: "black",
+                                                    borderRadius: "50%",
+                                                    width: 5,
+                                                    height: 5
+                                                }}
+                                            >
+                                            </div>
                                         </div>
-                                    </div>
-                                ))
-                            ))}
+                                    ))
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div
-                    style={{
-                        display: "flex",
-                        width: "50%",
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}
-                >
-                    <div className="Container">
-                        {alphanumericKeycapLegends.split("").map((legend, index) =>
-                            <Keycap
-                                key={index}
-                                fontFamily={fontFamilyName}
-                                fontSize={fontSize}
-                                isUppercase={isUppercase}
-                                justifyLegend={justifyLegend}
-                                alignLegend={alignLegend}
-                                legend={legend}
-                            />
-                        )}
-                    </div>
-
+                    </Column>
+                    <Column>
+                        <Keycaps />
+                    </Column>
                 </div>
             </div>
-        </div>
+        </LegendStyleContextProvider>
     );
 }
 
