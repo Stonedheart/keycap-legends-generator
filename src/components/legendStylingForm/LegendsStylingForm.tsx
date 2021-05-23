@@ -1,7 +1,13 @@
 import React from 'react';
+import {
+    setJustifyLegend,
+    setAlignLegend,
+    setFontFamily,
+    setFontSize,
+    setIsUppercase
+} from '../../actions/LegendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
 import { FlexPositions } from '../../models/flexPositions';
-import { LegendStyleActions } from '../../models/legendStyleActions';
 import LegendPositioning from './legendPositioning/LegendPositioning';
 
 import "./LegendsStylingForm.css";
@@ -61,8 +67,8 @@ const LegendsStylingForm = () => {
     const { dispatch, fontSize } = useLegendStyleContext();
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
-        dispatch({type: LegendStyleActions.setJustifyLegend, payload: justify});
-        dispatch({type: LegendStyleActions.setAlignLegend, payload: align});
+        dispatch(setJustifyLegend(justify));
+        dispatch(setAlignLegend(align));
     }
 
     return (
@@ -75,14 +81,14 @@ const LegendsStylingForm = () => {
                 }}
             >
                 {fontFamilyNames.map(name =>
-                    <option onClick={() => { dispatch({type: LegendStyleActions.setFontFamily, payload: name}) }}>{name}</option>
+                    <option onClick={() => { dispatch(setFontFamily(name)) }}>{name}</option>
                 )}
             </select>
             <label htmlFor="fontSize">Provide font size: </label>
             <input
                 type="number"
                 id="fontSize"
-                onChange={(e) => dispatch({type: LegendStyleActions.setFontSize, payload: e.target.value})}
+                onChange={(e) => dispatch(setFontSize(e.target.value))}
                 style={{
                     marginBottom: 8
                 }}
@@ -94,7 +100,7 @@ const LegendsStylingForm = () => {
                 }}
             >
                 <label htmlFor="uppercase">Make upppercase</label>
-                <input type="checkbox" id="uppercase" onChange={(e) => { dispatch({type: LegendStyleActions.setIsUppercase, payload: e.target.checked}) }} />
+                <input type="checkbox" id="uppercase" onChange={(e) => { dispatch(setIsUppercase(e.target.checked)) }} />
             </div>
             <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick}/>
         </div>
