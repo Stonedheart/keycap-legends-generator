@@ -12,6 +12,7 @@ const defaultLegendStyleState: LegendStylePropsState = {
     isUppercase: false,
     alignLegend: FlexPositions.flexStart,
     justifyLegend: FlexPositions.flexStart,
+    fontColor: "#000000", //black
 }
 
 const legendStyleReducer = (
@@ -29,6 +30,8 @@ const legendStyleReducer = (
             return { ...state, alignLegend: action.payload as FlexPositions }
         case LegendStyleActions.setJustifyLegend:
             return { ...state, justifyLegend: action.payload as FlexPositions }
+        case LegendStyleActions.setFontColor:
+            return { ...state, fontColor: action.payload as string }
     }
 };
 

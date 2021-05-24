@@ -6,4 +6,5 @@ export interface LegendStylePropsState {
     isUppercase: boolean,
     justifyLegend: FlexPositions,
     alignLegend: FlexPositions,
+    fontColor: string,
 }

@@ -6,3 +6,4 @@ export const setFontSize = (payload: string) => ({ type: LegendStyleActions.setF
 export const setIsUppercase = (payload: boolean) => ({ type: LegendStyleActions.setIsUppercase, payload });
 export const setAlignLegend = (payload: FlexPositions) => ({ type: LegendStyleActions.setAlignLegend, payload });
 export const setJustifyLegend = (payload: FlexPositions) => ({ type: LegendStyleActions.setJustifyLegend, payload });
+export const setFontColor = (payload: string) => ({ type: LegendStyleActions.setFontColor, payload });

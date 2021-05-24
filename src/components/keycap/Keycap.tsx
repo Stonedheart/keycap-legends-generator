@@ -13,6 +13,7 @@ const Keycap = ({ legend }: Props) => {
         isUppercase,
         justifyLegend,
         alignLegend,
+        fontColor
     } = useLegendStyleContext();
 
     return (
@@ -23,7 +24,8 @@ const Keycap = ({ legend }: Props) => {
                 fontSize,
                 textTransform: isUppercase ? "uppercase" : "lowercase",
                 justifyContent: justifyLegend,
-                alignItems: alignLegend
+                alignItems: alignLegend,
+                color: fontColor
             }}
         >
             {legend}

@@ -4,7 +4,8 @@ import {
     setAlignLegend,
     setFontFamily,
     setFontSize,
-    setIsUppercase
+    setIsUppercase,
+    setFontColor
 } from '../../actions/LegendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
 import { fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
@@ -20,7 +21,7 @@ const LegendsStylingForm = () => {
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
         dispatch(setJustifyLegend(justify));
         dispatch(setAlignLegend(align));
-    }
+    };
 
     return (
         <div className="form-container">
@@ -32,7 +33,7 @@ const LegendsStylingForm = () => {
                 }}
             >
                 {fontFamilyNames.map(name =>
-                    <option onClick={() => { dispatch(setFontFamily(name)) }}>{name}</option>
+                    <option key={name} onClick={() => { dispatch(setFontFamily(name)) }}>{name}</option>
                 )}
             </select>
             <label htmlFor="fontSize">Provide font size: </label>
@@ -54,6 +55,10 @@ const LegendsStylingForm = () => {
                 <input type="checkbox" id="uppercase" onChange={(e) => { dispatch(setIsUppercase(e.target.checked)) }} />
             </div>
             <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick}/>
+            <label htmlFor="colorPicker">
+                Choose color:
+            </label>
+            <input type="color" id="colorPicker" onChange={(e) => dispatch(setFontColor(e.target.value))}/>
         </div>
     );
 };

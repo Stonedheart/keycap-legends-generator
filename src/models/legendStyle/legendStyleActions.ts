@@ -3,5 +3,6 @@ export enum LegendStyleActions {
     setFontFamily,
     setIsUppercase,
     setJustifyLegend,
-    setAlignLegend
+    setAlignLegend,
+    setFontColor
 }
