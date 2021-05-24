@@ -1,4 +1,7 @@
+export const defaultFontFamily = "sans-serif";
+
 export const fontFamilyNames = [
+    defaultFontFamily,
     'Beyond',
     'BulletInYourHead',
     'D3Digitalism',

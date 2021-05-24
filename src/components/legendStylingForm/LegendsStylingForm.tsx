@@ -8,7 +8,7 @@ import {
     setFontColor
 } from '../../actions/LegendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
-import { fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
+import { defaultFontFamily, fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
 import { FlexPositions } from '../../models/shared/flexPositions';
 import LegendPositioning from './legendPositioning/LegendPositioning';
 
@@ -32,9 +32,17 @@ const LegendsStylingForm = () => {
                     marginBottom: 8
                 }}
             >
-                {fontFamilyNames.map(name =>
-                    <option key={name} onClick={() => { dispatch(setFontFamily(name)) }}>{name}</option>
-                )}
+                {fontFamilyNames.map(name => {
+                    const isDefalultOption = name === defaultFontFamily;
+                    return (
+                        <option
+                            key={name}
+                            selected={isDefalultOption}
+                            onClick={() => { dispatch(setFontFamily(name)) }}
+                        >
+                            {`${name} ${isDefalultOption && '(default)'}`}
+                        </option>)
+                })}
             </select>
             <label htmlFor="fontSize">Provide font size: </label>
             <input
