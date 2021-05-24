@@ -31,18 +31,16 @@ const LegendsStylingForm = () => {
                 style={{
                     marginBottom: 8
                 }}
+                defaultValue={defaultFontFamily}
             >
-                {fontFamilyNames.map(name => {
-                    const isDefalultOption = name === defaultFontFamily;
-                    return (
-                        <option
-                            key={name}
-                            selected={isDefalultOption}
-                            onClick={() => { dispatch(setFontFamily(name)) }}
-                        >
-                            {`${name} ${isDefalultOption && '(default)'}`}
-                        </option>)
-                })}
+                {fontFamilyNames.map(name =>
+                    <option
+                        key={name}
+                        onClick={() => { dispatch(setFontFamily(name)) }}
+                    >
+                        {`${name} ${name === defaultFontFamily && '(default)'}`}
+                    </option>
+                )}
             </select>
             <label htmlFor="fontSize">Provide font size: </label>
             <input
