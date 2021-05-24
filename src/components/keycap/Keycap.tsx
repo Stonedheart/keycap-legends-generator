@@ -1,12 +1,23 @@
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
+
 import './Keycap.css';
 
 
 interface Props {
-    legend: string
+    legend: string;
+    isSelected: boolean;
+    onMouseOver: () => void;
+    onMouseDown: () => void;
+    onMouseUp: () => void;
 }
 
-const Keycap = ({ legend }: Props) => {
+const Keycap = ({
+    legend,
+    isSelected,
+    onMouseOver,
+    onMouseDown,
+    onMouseUp,
+}: Props) => {
     const {
         fontFamily,
         fontSize,
@@ -25,8 +36,12 @@ const Keycap = ({ legend }: Props) => {
                 textTransform: isUppercase ? "uppercase" : "lowercase",
                 justifyContent: justifyLegend,
                 alignItems: alignLegend,
-                color: fontColor
+                color: fontColor,
+                backgroundColor: isSelected ? "lightgreen" : "white"
             }}
+            onMouseOver={onMouseOver}
+            onMouseDown={onMouseDown}
+            onMouseUp={onMouseUp}
         >
             {legend}
         </div>
