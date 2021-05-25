@@ -5,4 +5,5 @@
     border-radius: 10px;
     padding: 7.6px; /*~2mm*/
     display: flex;
+    user-select: none;
 }
