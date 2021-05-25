@@ -1,12 +1,11 @@
-import React from 'react';
 import {
     setJustifyLegend,
     setAlignLegend,
     setFontFamily,
     setFontSize,
-    setIsUppercase,
+    setTextTransform,
     setFontColor
-} from '../../actions/LegendStyleActions';
+} from '../../actions/legendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
 import { defaultFontFamily, fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
 import { FlexPositions } from '../../models/shared/flexPositions';
@@ -28,9 +27,7 @@ const LegendsStylingForm = () => {
             <label htmlFor="fontFamily">Provide font size: </label>
             <select
                 id="fontFamily"
-                style={{
-                    marginBottom: 8
-                }}
+                style={{ marginBottom: 8 }}
                 defaultValue={defaultFontFamily}
             >
                 {fontFamilyNames.map(name =>
@@ -47,18 +44,16 @@ const LegendsStylingForm = () => {
                 type="number"
                 id="fontSize"
                 onChange={(e) => dispatch(setFontSize(e.target.value))}
-                style={{
-                    marginBottom: 8
-                }}
+                style={{ marginBottom: 8 }}
                 value={fontSize}
             />
-            <div
-                style={{
-                    marginBottom: 8
-                }}
-            >
+            <div style={{ marginBottom: 8 }}>
                 <label htmlFor="uppercase">Make upppercase</label>
-                <input type="checkbox" id="uppercase" onChange={(e) => { dispatch(setIsUppercase(e.target.checked)) }} />
+                <input
+                    type="checkbox"
+                    id="uppercase"
+                    onChange={(e) => { dispatch(setTextTransform(e.target.checked ? "uppercase" : "lowercase")) }}
+                />
             </div>
             <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick}/>
             <label htmlFor="colorPicker">

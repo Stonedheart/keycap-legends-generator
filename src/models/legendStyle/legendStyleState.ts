@@ -1,10 +1,11 @@
 import { FlexPositions } from "../shared/flexPositions";
 
-export interface LegendStylePropsState {
+export default interface LegendStylePropsState {
     fontFamily: string,
     fontSize: number,
-    isUppercase: boolean,
+    textTransform: "lowercase" | "uppercase",
     justifyLegend: FlexPositions,
     alignLegend: FlexPositions,
     fontColor: string,
+    selectedKeycaps: number[],
 }
