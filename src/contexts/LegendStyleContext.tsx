@@ -1,10 +1,11 @@
 import { createContext, Dispatch, useContext } from "react";
 import { WithChildren } from "../models/shared/props";
-import { LegendStylePropsState } from "../models/legendStyle/legendStyleState";
+import LegendStylePropsState from "../models/legendStyle/legendStyleState";
 import { ReducerAction } from "../models/shared/reducerAction";
-import { LegendStyleActions } from "../models/legendStyle/legendStyleActions";
-import { LegendStyleProp } from "../models/legendStyle/legendStyleProp";
+import LegendStyleProp from "../models/legendStyle/legendStyleProp";
 import { useLegendStyleReducer } from "../reducers/legendStyleReducer";
+import LegendStyleActions from "../models/legendStyle/LegendStyleActions";
+
 
 interface LegendStyleContextValue extends LegendStylePropsState {
     dispatch: Dispatch<ReducerAction<LegendStyleActions, LegendStyleProp>>,
