@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
 import Keycap from '../keycap/Keycap';
+import alphanumericLegends from './alphanumericLegends';
 import { setSelectedKeycaps } from '../../actions/legendStyleActions';
 
 import "./Keycaps.css";
-
-
-const alphanumericKeycapLegends = "1234567890qwertyuiopasdfghjklzxcvbnm";
 
 const Keycaps = () => {
     const { dispatch } = useLegendStyleContext();
@@ -49,10 +47,10 @@ const Keycaps = () => {
     return (
         <>
             <div className="keycaps-container">
-                {alphanumericKeycapLegends.split("").map((legend, index) =>
+                {alphanumericLegends.map((legends, index) =>
                     <Keycap
                         key={index}
-                        legend={legend}
+                        legends={legends}
                         onMouseDown={() => handleMouseDown(index)}
                         onMouseOver={() => handleMouseOver(index)}
                         onMouseUp={handleMouseUp}
