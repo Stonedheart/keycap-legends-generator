@@ -7,8 +7,9 @@ import {
     setFontColor
 } from '../../actions/legendStyleActions';
 import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
-import { defaultFontFamily, fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
+
 import { FlexPositions } from '../../models/shared/flexPositions';
+import FontFamilySelect from './FontFamilySelect';
 import LegendPositioning from './legendPositioning/LegendPositioning';
 
 import "./LegendsStylingForm.css";
@@ -22,23 +23,11 @@ const LegendsStylingForm = () => {
         dispatch(setAlignLegend(align));
     };
 
+    const handleFontFamilySelection = (name: string) =>  { dispatch(setFontFamily(name)) };
+
     return (
         <div className="form-container">
-            <label htmlFor="fontFamily">Provide font size: </label>
-            <select
-                id="fontFamily"
-                style={{ marginBottom: 8 }}
-                defaultValue={defaultFontFamily}
-            >
-                {fontFamilyNames.map(name =>
-                    <option
-                        key={name}
-                        onClick={() => { dispatch(setFontFamily(name)) }}
-                    >
-                        {`${name} ${name === defaultFontFamily && '(default)'}`}
-                    </option>
-                )}
-            </select>
+            <FontFamilySelect onSelect={handleFontFamilySelection} />
             <label htmlFor="fontSize">Provide font size: </label>
             <input
                 type="number"
@@ -55,11 +44,11 @@ const LegendsStylingForm = () => {
                     onChange={(e) => { dispatch(setTextTransform(e.target.checked ? "uppercase" : "lowercase")) }}
                 />
             </div>
-            <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick}/>
+            <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick} />
             <label htmlFor="colorPicker">
                 Choose color:
             </label>
-            <input type="color" id="colorPicker" onChange={(e) => dispatch(setFontColor(e.target.value))}/>
+            <input type="color" id="colorPicker" onChange={(e) => dispatch(setFontColor(e.target.value))} />
         </div>
     );
 };
