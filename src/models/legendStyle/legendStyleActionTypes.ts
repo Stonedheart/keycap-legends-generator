@@ -1,4 +1,4 @@
-enum LegendStyleActions {
+export enum LegendStyleActionTypes {
     setFontSize,
     setFontFamily,
     setTextTransform,
@@ -7,5 +7,3 @@ enum LegendStyleActions {
     setFontColor,
     setSelectedKeycaps,
 }
-
-export default LegendStyleActions;
