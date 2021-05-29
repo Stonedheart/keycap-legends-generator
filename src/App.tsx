@@ -1,26 +1,28 @@
 import LegendsStyleContextProvider from './contexts/legendsStylesContext';
+import KeycapsSelectionContextProvider from './contexts/keycapsSelectionContext';
 import Keycaps from './components/keycaps/Keycaps';
 import Column from './components/column/Column';
-
-import './App.css';
 import LegendsStylingForm from './components/legendStylingForm/LegendsStylingForm';
 
+import './App.css';
 
 
 const App = () => {
     return (
-        <LegendsStyleContextProvider>
-            <div className="app">
-                <div className="app-container">
-                    <Column>
-                        <LegendsStylingForm />
-                    </Column>
-                    <Column>
-                        <Keycaps />
-                    </Column>
+        <KeycapsSelectionContextProvider>
+            <LegendsStyleContextProvider>
+                <div className="app">
+                    <div className="app-container">
+                        <Column>
+                            <LegendsStylingForm />
+                        </Column>
+                        <Column>
+                            <Keycaps />
+                        </Column>
+                    </div>
                 </div>
-            </div>
-        </LegendsStyleContextProvider>
+            </LegendsStyleContextProvider>
+        </KeycapsSelectionContextProvider>
     );
 }
 
