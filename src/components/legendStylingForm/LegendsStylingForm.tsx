@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { setLegendsIndexes } from '../../actions/keycapsSelectionActions';
 import {
     setJustifyLegend,
@@ -21,6 +21,7 @@ import "./LegendsStylingForm.css";
 const LegendsStylingForm = () => {
     const { dispatch: dispatchLegendStyleAction } = useLegendsStylesContext();
     const { dispatch: dispatchKeycapsSelectionAction, keycapsIndexes, legendsIndexes } = useKeycapsSelectionContext();
+    const [fontSizeInputValue, setFontSizeInputValue] = useState(DEFAULT_FONT_SIZE);
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
         dispatchLegendStyleAction(setJustifyLegend(justify, keycapsIndexes, legendsIndexes));
@@ -37,6 +38,7 @@ const LegendsStylingForm = () => {
     };
 
     const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setFontSizeInputValue(parseInt(event.target.value));
         dispatchLegendStyleAction(setFontSize(parseInt(event.target.value), keycapsIndexes, legendsIndexes));
     };
 
@@ -52,11 +54,11 @@ const LegendsStylingForm = () => {
     return (
         <div className="form-container">
             <label htmlFor="legendIndex0">legend1</label>
-            <input type="radio" value={0} name="legendIndex" id="legendIndex0" onChange={handleOnSelectRadio} />
+            <input type="radio" value="0" name="legendIndex" id="legendIndex0" onChange={handleOnSelectRadio} />
             <label htmlFor="legendIndex1">legend2</label>
-            <input type="radio" value={1} name="legendIndex" id="legendIndex1" onChange={handleOnSelectRadio} />
+            <input type="radio" value="1" name="legendIndex" id="legendIndex1" onChange={handleOnSelectRadio} />
             <label htmlFor="allLegends">all</label>
-            <input type="radio" name="legendIndex" id="allLegends" onChange={handleOnSelectRadio} />
+            <input type="radio" value="" name="legendIndex" id="allLegends" onChange={handleOnSelectRadio} />
             <FontFamilySelect onSelect={handleFontFamilySelection} />
             <label htmlFor="fontSize">Provide font size: </label>
             <input
@@ -64,7 +66,7 @@ const LegendsStylingForm = () => {
                 id="fontSize"
                 onChange={handleFontSizeChange}
                 style={{ marginBottom: 8 }}
-                value={DEFAULT_FONT_SIZE}
+                value={fontSizeInputValue}
             />
             <div style={{ marginBottom: 8 }}>
                 <label htmlFor="uppercase">Make upppercase</label>

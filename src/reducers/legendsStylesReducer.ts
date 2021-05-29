@@ -4,8 +4,8 @@ import { LegendStyle } from "../models/legendStyle/legendStyle";
 import { ReducerAction } from "../models/shared/reducerAction";
 import { LegendStyleActionTypes } from "../models/legendStyle/legendStyleActionTypes";
 import { LegendStylePayload } from "../models/legendStyle/legendStylePayload";
-import alphanumericLegends from "../components/keycaps/alphanumericLegends";
 import { DEFAULT_FONT_SIZE } from "../models/shared/defaultFontSize";
+import alphanumericLegends from "../components/keycaps/alphanumericLegends";
 
 
 const defaultLegendStyleState: LegendStyle = {
@@ -28,11 +28,11 @@ const legendsStylesReducer = (
     action: ReducerAction<LegendStyleActionTypes, LegendStylePayload>
 ): LegendsStylesState => {
     const { keycapsIndexes, legendsIndexes, valueToUpdate } = action.payload;
-    const keycapsToUpdateIndexes = keycapsIndexes.length ? keycapsIndexes : Array.from(alphanumericLegends.keys());
+    const keycapsIndexesToUpdate = keycapsIndexes.length ? keycapsIndexes : Array.from(alphanumericLegends.keys());
 
-    keycapsToUpdateIndexes.forEach((keycapIndex) => {
+    keycapsIndexesToUpdate.forEach((keycapIndex) => {
         const current = state[keycapIndex];
-        const legendsIndexesToUpdate = legendsIndexes.length ? legendsIndexes : Object.keys(current).map(parseInt);
+        const legendsIndexesToUpdate = legendsIndexes.length ? legendsIndexes : Array.from(current.keys());
         legendsIndexesToUpdate.forEach(legendIndex => {
             current[legendIndex] = {
                 ...current[legendIndex],
@@ -41,7 +41,7 @@ const legendsStylesReducer = (
         });
     });
 
-    return state;
+    return { ...state };
 };
 
 
