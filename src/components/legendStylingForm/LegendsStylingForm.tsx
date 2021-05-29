@@ -9,7 +9,7 @@ import {
     setFontColor,
 } from '../../actions/legendStyleActions';
 import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
-import { useLegendStyleContext } from '../../contexts/legendStyleContext';
+import { useLegendsStylesContext } from '../../contexts/legendsStylesContext';
 import { DEFAULT_FONT_SIZE } from '../../models/shared/defaultFontSize';
 import { FlexPositions } from '../../models/shared/flexPositions';
 import FontFamilySelect from './FontFamilySelect';
@@ -19,7 +19,7 @@ import "./LegendsStylingForm.css";
 
 
 const LegendsStylingForm = () => {
-    const { dispatch: dispatchLegendStyleAction } = useLegendStyleContext();
+    const { dispatch: dispatchLegendStyleAction } = useLegendsStylesContext();
     const { dispatch: dispatchKeycapsSelectionAction, keycapsIndexes, legendsIndexes } = useKeycapsSelectionContext();
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {

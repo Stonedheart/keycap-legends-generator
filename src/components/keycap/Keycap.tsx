@@ -1,11 +1,11 @@
-import { LegendStyles } from '../../models/legendStyle/legendStyleState';
+import { LegendStyle } from '../../models/legendStyle/legendStyle';
 
 import './Keycap.css'
 
 
 interface Props {
     legends: string[];
-    legendsStyles: LegendStyles[],
+    legendsStyles: LegendStyle[],
     isSelected: boolean;
     onMouseOver: () => void;
     onMouseDown: () => void;

@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 import { FlexPositions } from "../models/shared/flexPositions";
-import { LegendStyles } from "../models/legendStyle/legendStyleState";
+import { LegendStyle } from "../models/legendStyle/legendStyle";
 import { ReducerAction } from "../models/shared/reducerAction";
 import { LegendStyleActionTypes } from "../models/legendStyle/legendStyleActionTypes";
 import { LegendStylePayload } from "../models/legendStyle/legendStylePayload";
@@ -8,7 +8,7 @@ import alphanumericLegends from "../components/keycaps/alphanumericLegends";
 import { DEFAULT_FONT_SIZE } from "../models/shared/defaultFontSize";
 
 
-const defaultLegendStyleState: LegendStyles = {
+const defaultLegendStyleState: LegendStyle = {
     fontFamily: "sans-serif",
     fontSize: DEFAULT_FONT_SIZE,
     textTransform: "lowercase",
@@ -17,16 +17,16 @@ const defaultLegendStyleState: LegendStyles = {
     color: "#000000", //black
 }
 
-export type KeycapsLegendsStyleState = LegendStyles[][];
+export type LegendsStylesState = LegendStyle[][];
 
-const initializeState = () => alphanumericLegends.map(keycapLegends => keycapLegends.map(() => defaultLegendStyleState));
+const initializeState = () => alphanumericLegends.map(legends => legends.map(() => defaultLegendStyleState));
 
-const keycapsState: KeycapsLegendsStyleState = initializeState();
+const defaultState: LegendsStylesState = initializeState();
 
-const legendStyleReducer = (
-    state: KeycapsLegendsStyleState,
+const legendsStylesReducer = (
+    state: LegendsStylesState,
     action: ReducerAction<LegendStyleActionTypes, LegendStylePayload>
-): KeycapsLegendsStyleState => {
+): LegendsStylesState => {
     const { keycapsIndexes, legendsIndexes, valueToUpdate } = action.payload;
     const keycapsToUpdateIndexes = keycapsIndexes.length ? keycapsIndexes : Array.from(alphanumericLegends.keys());
 
@@ -45,4 +45,4 @@ const legendStyleReducer = (
 };
 
 
-export const useLegendStyleReducer = () => useReducer(legendStyleReducer, keycapsState);
+export const useLegendsStylesReducer = () => useReducer(legendsStylesReducer, defaultState);

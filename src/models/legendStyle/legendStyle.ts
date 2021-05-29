@@ -1,7 +1,7 @@
 import { FlexPositions } from "../shared/flexPositions";
 import { TextTransformType } from "./textTransformType";
 
-export interface LegendStyles {
+export interface LegendStyle {
     fontFamily: string,
     fontSize: number,
     textTransform: TextTransformType,

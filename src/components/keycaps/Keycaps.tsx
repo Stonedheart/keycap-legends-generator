@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLegendStyleContext } from '../../contexts/legendStyleContext';
+import { useLegendsStylesContext } from '../../contexts/legendsStylesContext';
 import Keycap from '../keycap/Keycap';
 import alphanumericLegends from './alphanumericLegends';
 import { setKeycapsIndexes } from '../../actions/keycapsSelectionActions';
@@ -9,7 +9,7 @@ import "./Keycaps.css";
 
 
 const Keycaps = () => {
-    const { keycapsLegendsStylesState } = useLegendStyleContext();
+    const { legendsStylesState } = useLegendsStylesContext();
     const { dispatch } = useKeycapsSelectionContext();
     const [selectedKeycapsList, setSelectedKeycapsList] = useState<number[]>([]);
     const [isSelectingEnabled, setIsSelectingEnabled] = useState(false);
@@ -52,7 +52,7 @@ const Keycaps = () => {
                     <Keycap
                         key={index}
                         legends={legends}
-                        legendsStyles={keycapsLegendsStylesState[index]}
+                        legendsStyles={legendsStylesState[index]}
                         onMouseDown={() => handleMouseDown(index)}
                         onMouseOver={() => handleMouseOver(index)}
                         onMouseUp={handleMouseUp}

@@ -1,4 +1,4 @@
-import LegendStyleContextProvider from './contexts/legendStyleContext';
+import LegendsStyleContextProvider from './contexts/legendsStylesContext';
 import Keycaps from './components/keycaps/Keycaps';
 import Column from './components/column/Column';
 
@@ -9,7 +9,7 @@ import LegendsStylingForm from './components/legendStylingForm/LegendsStylingFor
 
 const App = () => {
     return (
-        <LegendStyleContextProvider>
+        <LegendsStyleContextProvider>
             <div className="app">
                 <div className="app-container">
                     <Column>
@@ -20,7 +20,7 @@ const App = () => {
                     </Column>
                 </div>
             </div>
-        </LegendStyleContextProvider>
+        </LegendsStyleContextProvider>
     );
 }
 
