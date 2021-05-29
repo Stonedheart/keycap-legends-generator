@@ -3,10 +3,27 @@ import { LegendStyleActionTypes } from "../models/legendStyle/legendStyleActionT
 import { TextTransformType } from "../models/legendStyle/textTransformType";
 
 
-export const setFontFamily = (payload: string) => ({ type: LegendStyleActionTypes.setFontFamily, payload });
-export const setFontSize = (payload: string) => ({ type: LegendStyleActionTypes.setFontSize, payload });
-export const setTextTransform = (payload: TextTransformType) => ({ type: LegendStyleActionTypes.setTextTransform, payload });
-export const setAlignLegend = (payload: FlexPositions) => ({ type: LegendStyleActionTypes.setAlignLegend, payload });
-export const setJustifyLegend = (payload: FlexPositions) => ({ type: LegendStyleActionTypes.setJustifyLegend, payload });
-export const setFontColor = (payload: string) => ({ type: LegendStyleActionTypes.setFontColor, payload });
-export const setSelectedKeycaps = (payload: number[]) => ({ type: LegendStyleActionTypes.setSelectedKeycaps, payload });
+export const setFontFamily = (fontFamily: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setFontFamily,
+    payload: { valueToUpdate: fontFamily, keycapsIndexes, legendsIndexes }
+});
+export const setFontSize = (fontSize: number, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setFontSize,
+    payload: { valueToUpdate: fontSize, keycapsIndexes, legendsIndexes }
+});
+export const setFontColor = (color: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setFontColor,
+    payload: { valueToUpdate: color, keycapsIndexes, legendsIndexes }
+});
+export const setTextTransform = (textTransform: TextTransformType, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setTextTransform,
+    payload: { valueToUpdate: textTransform, keycapsIndexes, legendsIndexes}
+});
+export const setAlignLegend = (alignItems: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setAlignLegend,
+    payload:  { valueToUpdate: alignItems, keycapsIndexes, legendsIndexes }
+});
+export const setJustifyLegend = (justifyContent: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+    type: LegendStyleActionTypes.setJustifyLegend,
+    payload: { valueToUpdate: justifyContent, keycapsIndexes,  legendsIndexes }
+});
