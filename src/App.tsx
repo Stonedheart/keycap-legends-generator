@@ -1,4 +1,4 @@
-import LegendStyleContextProvider from './contexts/LegendStyleContext';
+import LegendStyleContextProvider from './contexts/legendStyleContext';
 import Keycaps from './components/keycaps/Keycaps';
 import Column from './components/column/Column';
 

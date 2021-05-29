@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
-import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
+import { useLegendStyleContext } from '../../contexts/legendStyleContext';
 import Keycap from '../keycap/Keycap';
 import alphanumericLegends from './alphanumericLegends';
-import { setSelectedKeycaps } from '../../actions/legendStyleActions';
+import { setKeycapsIndexes } from '../../actions/keycapsSelectionActions';
+import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
 
 import "./Keycaps.css";
 
+
 const Keycaps = () => {
-    const { dispatch } = useLegendStyleContext();
+    const { keycapsLegendsStylesState } = useLegendStyleContext();
+    const { dispatch } = useKeycapsSelectionContext();
     const [selectedKeycapsList, setSelectedKeycapsList] = useState<number[]>([]);
     const [isSelectingEnabled, setIsSelectingEnabled] = useState(false);
-    const [operateOnSelectedOnly, setOperateOnSelectedOnly] = useState(selectedKeycapsList.length > 0);
+
 
     useEffect(() => {
-        setOperateOnSelectedOnly(selectedKeycapsList.length > 0);
-    }, [selectedKeycapsList.length]);
+        dispatch(setKeycapsIndexes(selectedKeycapsList));
+    }, [selectedKeycapsList])
 
     const toggleKeyCapSelection = (index: number) => {
         selectedKeycapsList.includes(index) ?
@@ -36,11 +39,9 @@ const Keycaps = () => {
 
     const handleMouseUp = () => {
         setIsSelectingEnabled(false);
-        dispatch(setSelectedKeycaps(selectedKeycapsList));
     }
 
     const handleUnselectClick = () => {
-        dispatch(setSelectedKeycaps([]));
         setSelectedKeycapsList([]);
     }
 
@@ -51,11 +52,11 @@ const Keycaps = () => {
                     <Keycap
                         key={index}
                         legends={legends}
+                        legendsStyles={keycapsLegendsStylesState[index]}
                         onMouseDown={() => handleMouseDown(index)}
                         onMouseOver={() => handleMouseOver(index)}
                         onMouseUp={handleMouseUp}
                         isSelected={selectedKeycapsList.includes(index)}
-                        operateOnSelectedOnly={operateOnSelectedOnly}
                     />
                 )}
             </div>

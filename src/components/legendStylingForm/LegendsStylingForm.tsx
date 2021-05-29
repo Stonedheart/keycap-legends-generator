@@ -1,13 +1,16 @@
+import { ChangeEvent } from 'react';
+import { setLegendsIndexes } from '../../actions/keycapsSelectionActions';
 import {
     setJustifyLegend,
     setAlignLegend,
     setFontFamily,
     setFontSize,
     setTextTransform,
-    setFontColor
+    setFontColor,
 } from '../../actions/legendStyleActions';
-import { useLegendStyleContext } from '../../contexts/LegendStyleContext';
-
+import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
+import { useLegendStyleContext } from '../../contexts/legendStyleContext';
+import { DEFAULT_FONT_SIZE } from '../../models/shared/defaultFontSize';
 import { FlexPositions } from '../../models/shared/flexPositions';
 import FontFamilySelect from './FontFamilySelect';
 import LegendPositioning from './legendPositioning/LegendPositioning';
@@ -16,39 +19,66 @@ import "./LegendsStylingForm.css";
 
 
 const LegendsStylingForm = () => {
-    const { dispatch, fontSize } = useLegendStyleContext();
+    const { dispatch: dispatchLegendStyleAction } = useLegendStyleContext();
+    const { dispatch: dispatchKeycapsSelectionAction, keycapsIndexes, legendsIndexes } = useKeycapsSelectionContext();
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
-        dispatch(setJustifyLegend(justify));
-        dispatch(setAlignLegend(align));
+        dispatchLegendStyleAction(setJustifyLegend(justify, keycapsIndexes, legendsIndexes));
+        dispatchLegendStyleAction(setAlignLegend(align, keycapsIndexes, legendsIndexes));
     };
 
-    const handleFontFamilySelection = (name: string) =>  { dispatch(setFontFamily(name)) };
+    const handleFontFamilySelection = (name: string) =>  {
+        dispatchLegendStyleAction(setFontFamily(name, keycapsIndexes, legendsIndexes));
+    };
+
+    const handleOnSelectRadio = (event:  ChangeEvent<HTMLInputElement>) => {
+        const indexes = event.target.value ? [parseInt(event.target.value)] : []
+        dispatchKeycapsSelectionAction(setLegendsIndexes(indexes));
+    };
+
+    const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>) => {
+        dispatchLegendStyleAction(setFontSize(parseInt(event.target.value), keycapsIndexes, legendsIndexes));
+    };
+
+    const hanldeTextTransformCheckboxSelect = (event: ChangeEvent<HTMLInputElement>) => {
+        const textTransform = event.target.checked ? "uppercase" : "lowercase";
+        dispatchLegendStyleAction(setTextTransform(textTransform, keycapsIndexes, legendsIndexes));
+    };
+
+    const handleColorChange = (event: ChangeEvent<HTMLInputElement>) => {
+        dispatchLegendStyleAction(setFontColor(event.target.value, keycapsIndexes, legendsIndexes));
+    };
 
     return (
         <div className="form-container">
+            <label htmlFor="legendIndex0">legend1</label>
+            <input type="radio" value={0} name="legendIndex" id="legendIndex0" onChange={handleOnSelectRadio} />
+            <label htmlFor="legendIndex1">legend2</label>
+            <input type="radio" value={1} name="legendIndex" id="legendIndex1" onChange={handleOnSelectRadio} />
+            <label htmlFor="allLegends">all</label>
+            <input type="radio" name="legendIndex" id="allLegends" onChange={handleOnSelectRadio} />
             <FontFamilySelect onSelect={handleFontFamilySelection} />
             <label htmlFor="fontSize">Provide font size: </label>
             <input
                 type="number"
                 id="fontSize"
-                onChange={(e) => dispatch(setFontSize(e.target.value))}
+                onChange={handleFontSizeChange}
                 style={{ marginBottom: 8 }}
-                value={fontSize}
+                value={DEFAULT_FONT_SIZE}
             />
             <div style={{ marginBottom: 8 }}>
                 <label htmlFor="uppercase">Make upppercase</label>
                 <input
                     type="checkbox"
                     id="uppercase"
-                    onChange={(e) => { dispatch(setTextTransform(e.target.checked ? "uppercase" : "lowercase")) }}
+                    onChange={hanldeTextTransformCheckboxSelect}
                 />
             </div>
             <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick} />
             <label htmlFor="colorPicker">
                 Choose color:
             </label>
-            <input type="color" id="colorPicker" onChange={(e) => dispatch(setFontColor(e.target.value))} />
+            <input type="color" id="colorPicker" onChange={handleColorChange} />
         </div>
     );
 };
