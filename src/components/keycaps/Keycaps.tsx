@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLegendsStylesContext } from '../../contexts/legendsStylesContext';
+import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
+import { setKeycapsIndexes } from '../../actions/keycapsSelectionActions';
 import Keycap from '../keycap/Keycap';
 import alphanumericLegends from './alphanumericLegends';
-import { setKeycapsIndexes } from '../../actions/keycapsSelectionActions';
-import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
 
 import "./Keycaps.css";
 
