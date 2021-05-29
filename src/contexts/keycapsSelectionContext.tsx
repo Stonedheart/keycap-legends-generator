@@ -6,7 +6,7 @@ import { KeycapsSelectionActionTypes } from "../models/keycapsSelection/keycapsS
 import { KeycapsSelectionState } from "../models/keycapsSelection/keycapsSelectionState";
 
 
-interface KeycapsSelectionContextValue extends KeycapsSelectionState{
+interface KeycapsSelectionContextValue extends KeycapsSelectionState {
     dispatch: Dispatch<ReducerAction<KeycapsSelectionActionTypes, number[]>>;
 }
 
