@@ -1,42 +1,48 @@
 import { useReducer } from "react";
 import { FlexPositions } from "../models/shared/flexPositions";
-import LegendStylePropsState from "../models/legendStyle/legendStyleState";
+import { LegendStyles } from "../models/legendStyle/legendStyleState";
 import { ReducerAction } from "../models/shared/reducerAction";
-import LegendStyleActions from "../models/legendStyle/LegendStyleActions";
-import LegendStyleProp from "../models/legendStyle/legendStyleProp";
-import TextTransformType from "../models/legendStyle/tyextTransformType";
+import { LegendStyleActionTypes } from "../models/legendStyle/legendStyleActionTypes";
+import { LegendStylePayload } from "../models/legendStyle/legendStylePayload";
+import alphanumericLegends from "../components/keycaps/alphanumericLegends";
+import { DEFAULT_FONT_SIZE } from "../models/shared/defaultFontSize";
 
 
-const defaultLegendStyleState: LegendStylePropsState = {
+const defaultLegendStyleState: LegendStyles = {
     fontFamily: "sans-serif",
-    fontSize: 16,
+    fontSize: DEFAULT_FONT_SIZE,
     textTransform: "lowercase",
-    alignLegend: FlexPositions.flexStart,
-    justifyLegend: FlexPositions.flexStart,
-    fontColor: "#000000", //black
-    selectedKeycaps: []
+    alignItems: FlexPositions.flexStart,
+    justifyContent: FlexPositions.flexStart,
+    color: "#000000", //black
 }
 
+export type KeycapsLegendsStyleState = LegendStyles[][];
+
+const initializeState = () => alphanumericLegends.map(keycapLegends => keycapLegends.map(() => defaultLegendStyleState));
+
+const keycapsState: KeycapsLegendsStyleState = initializeState();
+
 const legendStyleReducer = (
-    state: LegendStylePropsState,
-    action: ReducerAction<LegendStyleActions, LegendStyleProp>
-): LegendStylePropsState => {
-    switch(action.type) {
-        case LegendStyleActions.setFontFamily:
-            return { ...state, fontFamily: action.payload as string }
-        case LegendStyleActions.setFontSize:
-            return { ...state, fontSize: parseInt(action.payload as string) }
-        case LegendStyleActions.setTextTransform:
-            return { ...state, textTransform: action.payload as TextTransformType }
-        case LegendStyleActions.setAlignLegend:
-            return { ...state, alignLegend: action.payload as FlexPositions }
-        case LegendStyleActions.setJustifyLegend:
-            return { ...state, justifyLegend: action.payload as FlexPositions }
-        case LegendStyleActions.setFontColor:
-            return { ...state, fontColor: action.payload as string }
-        case LegendStyleActions.setSelectedKeycaps:
-            return { ...state,selectedKeycaps: action.payload as number[] }
-    }
+    state: KeycapsLegendsStyleState,
+    action: ReducerAction<LegendStyleActionTypes, LegendStylePayload>
+): KeycapsLegendsStyleState => {
+    const { keycapsIndexes, legendsIndexes, valueToUpdate } = action.payload;
+    const keycapsToUpdateIndexes = keycapsIndexes.length ? keycapsIndexes : Array.from(alphanumericLegends.keys());
+
+    keycapsToUpdateIndexes.forEach((keycapIndex) => {
+        const current = state[keycapIndex];
+        const legendsIndexesToUpdate = legendsIndexes.length ? legendsIndexes : Object.keys(current).map(parseInt);
+        legendsIndexesToUpdate.forEach(legendIndex => {
+            current[legendIndex] = {
+                ...current[legendIndex],
+                [action.type]: valueToUpdate
+            }
+        });
+    });
+
+    return state;
 };
 
-export const useLegendStyleReducer = () => useReducer(legendStyleReducer, defaultLegendStyleState);
+
+export const useLegendStyleReducer = () => useReducer(legendStyleReducer, keycapsState);
