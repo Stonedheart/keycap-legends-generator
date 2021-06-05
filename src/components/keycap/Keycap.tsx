@@ -33,7 +33,10 @@ const Keycap = ({
             {legends.map((legend, index) => (
                 <div
                     key={index}
-                    style={legendsStyles[index]}
+                    style={{
+                        display: "flex",
+                        ...legendsStyles[index]
+                    }}
                 >
                     {legend}
                 </div>
