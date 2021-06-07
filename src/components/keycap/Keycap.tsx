@@ -22,7 +22,7 @@ const Keycap = ({
 }: Props) => {
     return (
         <div
-            className="keycap"
+            className="keycap-shape keycap"
             style={{
                 backgroundColor: isSelected ? "lightgreen" : "white"
             }}
@@ -33,8 +33,9 @@ const Keycap = ({
             {legends.map((legend, index) => (
                 <div
                     key={index}
+                    className="keycap-shape legend"
                     style={{
-                        display: "flex",
+                        zIndex: index,
                         ...legendsStyles[index]
                     }}
                 >
