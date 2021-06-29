@@ -1,4 +1,4 @@
-About:
+About:\
 This project is created to help prepare keycap legends template for sublimation print to imprint it later on real keycaps.
 
 Current functionalities:\
