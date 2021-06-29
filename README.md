@@ -1,20 +1,20 @@
 About:
 This project is created to help prepare keycap legends template for sublimation print to imprint it later on real keycaps.
 
-Current functionalities:
--select font
--select font size
--select font color
--select legend position on keycap
--operate on all keycaps
--select keycaps with click or multiple at once with click and drag
+Current functionalities:\
+-select font\
+-select font size\
+-select font color\
+-select legend position on keycap\
+-operate on all keycaps\
+-select keycaps with click or multiple at once with click and drag\
 -for now only alphanumeric keys available
 
-To do:
--add rest of keys
--add possibility to use gradient as a font color
--add possiblity to add images
--add another fonts
+To do:\
+-add rest of keys\
+-add possibility to use gradient as a font color\
+-add possiblity to add images\
+-add another fonts\
 -export template as .pdf or .png
 
 
