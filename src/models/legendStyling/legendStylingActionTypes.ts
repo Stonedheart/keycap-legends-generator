@@ -1,4 +1,4 @@
-export enum LegendStyleActionTypes {
+export enum LegendStylingActionTypes {
     setFontSize = "fontSize",
     setFontFamily = "fontFamily",
     setTextTransform = "textTransform",
