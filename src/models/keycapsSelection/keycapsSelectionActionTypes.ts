@@ -1,4 +1,5 @@
 export enum KeycapsSelectionActionTypes {
-    setKeycapsIndexes = "keycapsIndexes",
-    setLegendsIndexes = "legendsIndexes"
+    selectKeycaps,
+    selectLegends,
+    unselectKeycaps
 }
