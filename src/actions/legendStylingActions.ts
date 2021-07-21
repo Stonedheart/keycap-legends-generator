@@ -1,29 +1,29 @@
 import { FlexPositions } from "../models/shared/flexPositions";
-import { LegendStyleActionTypes } from "../models/legendStyle/legendStyleActionTypes";
-import { TextTransformType } from "../models/legendStyle/textTransformType";
+import { LegendStylingActionTypes } from "../models/legendStyling/legendStylingActionTypes";
+import { TextTransformType } from "../models/legendStyling/textTransformType";
 
 
 export const setFontFamily = (fontFamily: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setFontFamily,
+    type: LegendStylingActionTypes.setFontFamily,
     payload: { valueToUpdate: fontFamily, keycapsIndexes, legendsIndexes }
 });
 export const setFontSize = (fontSize: number, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setFontSize,
+    type: LegendStylingActionTypes.setFontSize,
     payload: { valueToUpdate: fontSize, keycapsIndexes, legendsIndexes }
 });
 export const setFontColor = (color: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setFontColor,
+    type: LegendStylingActionTypes.setFontColor,
     payload: { valueToUpdate: color, keycapsIndexes, legendsIndexes }
 });
 export const setTextTransform = (textTransform: TextTransformType, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setTextTransform,
+    type: LegendStylingActionTypes.setTextTransform,
     payload: { valueToUpdate: textTransform, keycapsIndexes, legendsIndexes}
 });
 export const setAlignLegend = (alignItems: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setAlignLegend,
+    type: LegendStylingActionTypes.setAlignLegend,
     payload:  { valueToUpdate: alignItems, keycapsIndexes, legendsIndexes }
 });
 export const setJustifyLegend = (justifyContent: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
-    type: LegendStyleActionTypes.setJustifyLegend,
+    type: LegendStylingActionTypes.setJustifyLegend,
     payload: { valueToUpdate: justifyContent, keycapsIndexes,  legendsIndexes }
 });
