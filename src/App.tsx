@@ -1,5 +1,4 @@
-import LegendsStyleContextProvider from './contexts/legendsStylesContext';
-import KeycapsSelectionContextProvider from './contexts/keycapsSelectionContext';
+import KeycapsContextProvider from './contexts/keycapsContext';
 import Keycaps from './components/keycaps/Keycaps';
 import Column from './components/column/Column';
 import LegendsStylingForm from './components/legendStylingForm/LegendsStylingForm';
@@ -9,20 +8,18 @@ import './App.css';
 
 const App = () => {
     return (
-        <KeycapsSelectionContextProvider>
-            <LegendsStyleContextProvider>
-                <div className="app">
-                    <div className="app-container">
-                        <Column>
-                            <LegendsStylingForm />
-                        </Column>
-                        <Column>
-                            <Keycaps />
-                        </Column>
-                    </div>
+        <KeycapsContextProvider>
+            <div className="app">
+                <div className="app-container">
+                    <Column>
+                        <LegendsStylingForm />
+                    </Column>
+                    <Column>
+                        <Keycaps />
+                    </Column>
                 </div>
-            </LegendsStyleContextProvider>
-        </KeycapsSelectionContextProvider>
+            </div>
+        </KeycapsContextProvider>
     );
 }
 
