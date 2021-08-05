@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { setLegendsIndexes } from '../../actions/keycapsSelectionActions';
+import { selectLegends } from '../../actions/keycapsSelectionActions';
 import {
     setJustifyLegend,
     setAlignLegend,
@@ -7,9 +7,8 @@ import {
     setFontSize,
     setTextTransform,
     setFontColor,
-} from '../../actions/legendStyleActions';
-import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
-import { useLegendsStylesContext } from '../../contexts/legendsStylesContext';
+} from '../../actions/legendStylingActions';
+import { useKeycapsContext } from '../../contexts/keycapsContext';
 import { DEFAULT_FONT_SIZE } from '../../models/shared/defaultFontSize';
 import { FlexPositions } from '../../models/shared/flexPositions';
 import FontFamilySelect from './FontFamilySelect';
@@ -19,36 +18,35 @@ import "./LegendsStylingForm.css";
 
 
 const LegendsStylingForm = () => {
-    const { dispatch: dispatchLegendStyleAction } = useLegendsStylesContext();
-    const { dispatch: dispatchKeycapsSelectionAction, keycapsIndexes, legendsIndexes } = useKeycapsSelectionContext();
+    const { dispatch } = useKeycapsContext();
     const [fontSizeInputValue, setFontSizeInputValue] = useState(DEFAULT_FONT_SIZE);
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
-        dispatchLegendStyleAction(setJustifyLegend(justify, keycapsIndexes, legendsIndexes));
-        dispatchLegendStyleAction(setAlignLegend(align, keycapsIndexes, legendsIndexes));
+        dispatch(setJustifyLegend(justify));
+        dispatch(setAlignLegend(align));
     };
 
     const handleFontFamilySelection = (name: string) =>  {
-        dispatchLegendStyleAction(setFontFamily(name, keycapsIndexes, legendsIndexes));
+        dispatch(setFontFamily(name));
     };
 
     const handleOnSelectRadio = (event:  ChangeEvent<HTMLInputElement>) => {
         const indexes = event.target.value ? [parseInt(event.target.value)] : []
-        dispatchKeycapsSelectionAction(setLegendsIndexes(indexes));
+        dispatch(selectLegends(indexes));
     };
 
     const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>) => {
         setFontSizeInputValue(parseInt(event.target.value));
-        dispatchLegendStyleAction(setFontSize(parseInt(event.target.value), keycapsIndexes, legendsIndexes));
+        dispatch(setFontSize(parseInt(event.target.value)));
     };
 
     const hanldeTextTransformCheckboxSelect = (event: ChangeEvent<HTMLInputElement>) => {
         const textTransform = event.target.checked ? "uppercase" : "lowercase";
-        dispatchLegendStyleAction(setTextTransform(textTransform, keycapsIndexes, legendsIndexes));
+        dispatch(setTextTransform(textTransform));
     };
 
     const handleColorChange = (event: ChangeEvent<HTMLInputElement>) => {
-        dispatchLegendStyleAction(setFontColor(event.target.value, keycapsIndexes, legendsIndexes));
+        dispatch(setFontColor(event.target.value));
     };
 
     return (

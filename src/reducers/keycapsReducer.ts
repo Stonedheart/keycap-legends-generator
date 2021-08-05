@@ -85,6 +85,23 @@ const keycapsReducer = (
         case KeycapsSelectionActionTypes.unselectKeycaps:
             action.payload.forEach(keycapIndex => keycaps[keycapIndex].isSelected = false);
             break;
+        case LegendStylingActionTypes.setFontFamily:
+        case LegendStylingActionTypes.setFontColor:
+        case LegendStylingActionTypes.setFontSize:
+        case LegendStylingActionTypes.setTextTransform:
+        case LegendStylingActionTypes.setAlignLegend:
+        case LegendStylingActionTypes.setJustifyLegend:
+            const { propName, value } = action.payload;
+            selectedKeycaps.forEach(keycap => keycap.legends.forEach(legend => {
+                if (!legend.isSelected) {
+                    return;
+                }
+                legend.styles = {
+                    ...legend.styles,
+                    [propName]: value
+                }
+            }));
+            break;
     }
 
     return { ...state };

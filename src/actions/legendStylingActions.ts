@@ -1,29 +1,30 @@
 import { FlexPositions } from "../models/shared/flexPositions";
 import { LegendStylingActionTypes } from "../models/legendStyling/legendStylingActionTypes";
 import { TextTransformType } from "../models/legendStyling/textTransformType";
+import { KeycapsAction } from "../reducers/keycapsReducer";
 
 
-export const setFontFamily = (fontFamily: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setFontFamily = (fontFamily: string): KeycapsAction => ({
     type: LegendStylingActionTypes.setFontFamily,
-    payload: { valueToUpdate: fontFamily, keycapsIndexes, legendsIndexes }
+    payload: { propName: "fontFamily", value: fontFamily }
 });
-export const setFontSize = (fontSize: number, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setFontSize = (fontSize: number): KeycapsAction => ({
     type: LegendStylingActionTypes.setFontSize,
-    payload: { valueToUpdate: fontSize, keycapsIndexes, legendsIndexes }
+    payload: { propName: "fontSize", value: fontSize }
 });
-export const setFontColor = (color: string, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setFontColor = (color: string,): KeycapsAction => ({
     type: LegendStylingActionTypes.setFontColor,
-    payload: { valueToUpdate: color, keycapsIndexes, legendsIndexes }
+    payload: { propName: "color", value: color }
 });
-export const setTextTransform = (textTransform: TextTransformType, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setTextTransform = (textTransform: TextTransformType): KeycapsAction => ({
     type: LegendStylingActionTypes.setTextTransform,
-    payload: { valueToUpdate: textTransform, keycapsIndexes, legendsIndexes}
+    payload: { propName: "textTransform", value: textTransform}
 });
-export const setAlignLegend = (alignItems: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setAlignLegend = (alignItems: FlexPositions): KeycapsAction => ({
     type: LegendStylingActionTypes.setAlignLegend,
-    payload:  { valueToUpdate: alignItems, keycapsIndexes, legendsIndexes }
+    payload:  { propName: "alignItems", value: alignItems }
 });
-export const setJustifyLegend = (justifyContent: FlexPositions, keycapsIndexes: number[], legendsIndexes: number[]) => ({
+export const setJustifyLegend = (justifyContent: FlexPositions): KeycapsAction => ({
     type: LegendStylingActionTypes.setJustifyLegend,
-    payload: { valueToUpdate: justifyContent, keycapsIndexes,  legendsIndexes }
+    payload: { propName: "justifyContent", value: justifyContent }
 });
