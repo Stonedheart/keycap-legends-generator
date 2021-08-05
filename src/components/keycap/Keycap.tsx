@@ -1,11 +1,9 @@
-import { LegendStyle } from '../../models/legendStyle/legendStyle';
-
+import { Legend } from '../../models/legend';
 import './Keycap.css'
 
 
 interface Props {
-    legends: string[];
-    legendsStyles: LegendStyle[],
+    legends: Legend[];
     isSelected: boolean;
     onMouseOver: () => void;
     onMouseDown: () => void;
@@ -14,7 +12,6 @@ interface Props {
 
 const Keycap = ({
     legends,
-    legendsStyles,
     isSelected,
     onMouseOver,
     onMouseDown,
@@ -36,10 +33,10 @@ const Keycap = ({
                     className="keycap-shape legend"
                     style={{
                         zIndex: index,
-                        ...legendsStyles[index]
+                        ...legend.styles
                     }}
                 >
-                    {legend}
+                    {legend.glyph}
                 </div>
             ))}
         </div>
