@@ -1,18 +1,17 @@
-import { Legend } from '../../models/legend';
-import './Keycap.css'
+import { Keycap as KeycapModel } from '../../models/keycap/keycap';
+
+import "./Keycap.css";
 
 
 interface Props {
-    legends: Legend[];
-    isSelected: boolean;
+    keycap: KeycapModel
     onMouseOver: () => void;
     onMouseDown: () => void;
     onMouseUp: () => void;
 }
 
 const Keycap = ({
-    legends,
-    isSelected,
+    keycap: { isSelected, size, legends },
     onMouseOver,
     onMouseDown,
     onMouseUp,
@@ -21,7 +20,8 @@ const Keycap = ({
         <div
             className="keycap-shape keycap"
             style={{
-                backgroundColor: isSelected ? "lightgreen" : "white"
+                backgroundColor: isSelected ? "lightgreen" : "white",
+                width: size * (45.6 - 7.6), /*~12mm - ~2mm*/
             }}
             onMouseOver={onMouseOver}
             onMouseDown={onMouseDown}

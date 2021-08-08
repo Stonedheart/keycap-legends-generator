@@ -9,7 +9,7 @@ import { useKeycapsContext } from '../../contexts/keycapsContext';
 const Keycaps = () => {
     const { dispatch, keycaps } = useKeycapsContext();
     const [isSelectingEnabled, setIsSelectingEnabled] = useState(false);
-        
+
     const toggleKeyCapSelection = (keycap: KeycapModel, keycapIndex: number) => {
         if (keycap.isSelected) {
             dispatch(unselectKeycaps([keycapIndex]));
@@ -44,11 +44,10 @@ const Keycaps = () => {
                 {keycaps.map((keycap, index) =>
                     <Keycap
                         key={index}
-                        legends={keycap.legends}
+                        keycap={keycap}
                         onMouseDown={() => handleMouseDown(keycap, index)}
                         onMouseOver={() => handleMouseOver(keycap, index)}
                         onMouseUp={handleMouseUp}
-                        isSelected={keycap.isSelected}
                     />
                 )}
             </div>
