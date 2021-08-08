@@ -1,11 +1,16 @@
 import { KeycapsSelectionActionTypes } from "../models/keycapsSelection/keycapsSelectionActionTypes";
 
-export const setKeycapsIndexes = (keycapsIndexes: number[]) => ({
-    type: KeycapsSelectionActionTypes.setKeycapsIndexes,
+export const selectKeycaps = (keycapsIndexes: number[]) => ({
+    type: KeycapsSelectionActionTypes.selectKeycaps,
     payload: keycapsIndexes
 });
 
-export const setLegendsIndexes = (legendsIndexes: number[]) => ({
-    type: KeycapsSelectionActionTypes.setLegendsIndexes,
+export const selectLegends = (legendsIndexes: number[]) => ({
+    type: KeycapsSelectionActionTypes.selectLegends,
     payload: legendsIndexes
+});
+
+export const unselectKeycaps = (keycapsIndexes: number[]) => ({
+    type: KeycapsSelectionActionTypes.unselectKeycaps,
+    payload: keycapsIndexes
 });

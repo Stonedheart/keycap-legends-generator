@@ -1,4 +1,4 @@
-import { defaultFontFamily, fontFamilyNames } from '../../models/legendStyle/legendStyleFontFamilies';
+import { defaultFontFamily, fontFamilyNames } from '../../models/legendStyling/legendStyleFontFamilies';
 
 
 interface Props {

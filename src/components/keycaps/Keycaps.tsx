@@ -1,70 +1,62 @@
-import { useEffect, useState } from 'react';
-import { useLegendsStylesContext } from '../../contexts/legendsStylesContext';
-import { useKeycapsSelectionContext } from '../../contexts/keycapsSelectionContext';
-import { setKeycapsIndexes } from '../../actions/keycapsSelectionActions';
+import { useState } from 'react';
+import { Keycap as KeycapModel } from '../../models/keycap/keycap';
+import { selectKeycaps, unselectKeycaps } from '../../actions/keycapsSelectionActions';
 import Keycap from '../keycap/Keycap';
-import alphanumericLegends from './alphanumericLegends';
-
 import "./Keycaps.css";
+import { useKeycapsContext } from '../../contexts/keycapsContext';
 
 
 const Keycaps = () => {
-    const { legendsStylesState } = useLegendsStylesContext();
-    const { dispatch } = useKeycapsSelectionContext();
-    const [selectedKeycapsList, setSelectedKeycapsList] = useState<number[]>([]);
+    const { dispatch, keycaps } = useKeycapsContext();
     const [isSelectingEnabled, setIsSelectingEnabled] = useState(false);
-
-
-    useEffect(() => {
-        dispatch(setKeycapsIndexes(selectedKeycapsList));
-    }, [selectedKeycapsList])
-
-    const toggleKeyCapSelection = (index: number) => {
-        selectedKeycapsList.includes(index) ?
-            setSelectedKeycapsList(current => current.filter(item => item !== index)) :
-            setSelectedKeycapsList(current => [...current, index]);
+        
+    const toggleKeyCapSelection = (keycap: KeycapModel, keycapIndex: number) => {
+        if (keycap.isSelected) {
+            dispatch(unselectKeycaps([keycapIndex]));
+        } else {
+            dispatch(selectKeycaps([keycapIndex]));
+        }
     }
 
-    const handleMouseDown = (index: number) => {
+    const handleMouseDown = (keycap: KeycapModel, index: number) => {
         setIsSelectingEnabled(true);
-        toggleKeyCapSelection(index);
+        toggleKeyCapSelection(keycap, index);
     }
 
-    const handleMouseOver = (index: number) => {
+    const handleMouseOver = (keycap: KeycapModel, index: number) => {
         if (!isSelectingEnabled) {
             return;
         }
-        toggleKeyCapSelection(index);
+        toggleKeyCapSelection(keycap, index);
     }
 
     const handleMouseUp = () => {
         setIsSelectingEnabled(false);
     }
 
-    const handleUnselectClick = () => {
-        setSelectedKeycapsList([]);
+    const handleUnselectAllClick = () => {
+        dispatch(unselectKeycaps(Object.keys(keycaps).map(key => parseInt(key))));
     }
 
     return (
         <>
             <div className="keycaps-container">
-                {alphanumericLegends.map((legends, index) =>
+                {keycaps.map((keycap, index) =>
                     <Keycap
                         key={index}
-                        legends={legends}
-                        legendsStyles={legendsStylesState[index]}
-                        onMouseDown={() => handleMouseDown(index)}
-                        onMouseOver={() => handleMouseOver(index)}
+                        legends={keycap.legends}
+                        onMouseDown={() => handleMouseDown(keycap, index)}
+                        onMouseOver={() => handleMouseOver(keycap, index)}
                         onMouseUp={handleMouseUp}
-                        isSelected={selectedKeycapsList.includes(index)}
+                        isSelected={keycap.isSelected}
                     />
                 )}
             </div>
             <button
-                onClick={handleUnselectClick}
-                disabled={selectedKeycapsList.length === 0}
+                onClick={handleUnselectAllClick}
+                disabled={keycaps.filter(keycap => keycap.isSelected).length === 0}
             >
-                Unselect
+                Unselect All
             </button>
         </>
     );
