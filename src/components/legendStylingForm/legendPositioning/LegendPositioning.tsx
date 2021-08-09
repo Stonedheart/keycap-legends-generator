@@ -11,7 +11,7 @@ const LegendPositioning = ({ onLegendPositionClick }: Props) => {
     const label = "Legend position:";
 
     return (
-        <>
+        <div>
             <label htmlFor="legendPosition">
                 {label}
             </label>
@@ -33,7 +33,7 @@ const LegendPositioning = ({ onLegendPositionClick }: Props) => {
                     ))
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
