@@ -2,13 +2,14 @@
     display: flex;
     user-select: none;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .keycap {
     height: calc(45.6px - 7.6px); /*~12mm - ~2mm*/
     position: relative;
     border: solid 1px grey;
-    border-radius: 10px;
+    margin: 1px;
 }
 
 .legend {
@@ -16,4 +17,6 @@
     position: absolute;
     top: 0;
     left: 0;
+    width: inherit;
+    height: inherit;
 }
