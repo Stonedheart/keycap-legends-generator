@@ -31,10 +31,7 @@ const Keycap = ({
                 <div
                     key={index}
                     className="keycap-shape legend"
-                    style={{
-                        zIndex: index,
-                        ...legend.styles
-                    }}
+                    style={legend.styles}
                 >
                     {legend.glyph}
                 </div>

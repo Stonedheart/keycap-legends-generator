@@ -17,7 +17,8 @@ const defaultLegendStyleState: LegendStyle = {
     textTransform: "lowercase",
     alignItems: FlexPositions.flexStart,
     justifyContent: FlexPositions.flexStart,
-    color: "#000000", //black
+    color: "#000000", //black,
+    zIndex: -1
 }
 
 type KeycapsState = {
@@ -30,9 +31,9 @@ const initializeState = (): KeycapsState => ({
     keycaps: keycapsList.map(keycap => ({
         size: keycap.size,
         isSelected: false,
-        legends: keycap.legends.map(legend => ({
+        legends: keycap.legends.map((legend, index) => ({
             glyph: legend,
-            styles: defaultLegendStyleState,
+            styles: {...defaultLegendStyleState, zIndex: index},
             isSelected: true
         } as Legend)),
     } as Keycap))

@@ -8,4 +8,5 @@ export interface LegendStyle {
     justifyContent: FlexPositions,
     alignItems: FlexPositions,
     color: string,
+    zIndex: number
 }
