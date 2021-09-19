@@ -4,6 +4,8 @@ import { selectKeycaps, unselectKeycaps } from '../../actions/keycapsSelectionAc
 import Keycap from '../keycap/Keycap';
 import "./Keycaps.css";
 import { useKeycapsContext } from '../../contexts/keycapsContext';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import KeycapsPdf from '../keycacpsPdf/KeycapsPdf';
 
 
 const Keycaps = () => {
@@ -58,6 +60,14 @@ const Keycaps = () => {
             >
                 Unselect All
             </button>
+            <PDFDownloadLink
+                document={<KeycapsPdf keycaps={keycaps} />}
+                fileName="keycaps2print.pdf"
+            >
+                {({ loading }) =>
+                    loading ? 'Loading document...' : 'Download now!'
+                }
+            </PDFDownloadLink>
         </>
     );
 };
