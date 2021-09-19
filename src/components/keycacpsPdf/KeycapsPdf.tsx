@@ -13,7 +13,13 @@ const KeycapsPdf = ({ keycaps }: Props) => (
     <Document>
         <Page size="A4" style={styles.page} wrap={true}>
             {keycaps.map((keycap, index) =>
-                <View key={index} style={[styles.keycapShape, styles.keycap]}>
+                <View
+                    key={index}
+                    style={[
+                        styles.keycapShape,
+                        styles.keycap,
+                        { width: keycap.size * (45.6 - 7.6), /*~12mm - ~2mm*/ }
+                    ]}>
                     {keycap.legends.map((legend, index) => (
                         <View
                             key={index}
@@ -23,6 +29,7 @@ const KeycapsPdf = ({ keycaps }: Props) => (
                                 {
                                     justifyContent: legend.styles.justifyContent,
                                     alignItems: legend.styles.alignItems,
+                                    width: keycap.size * (45.6 - 7.6), /*~12mm - ~2mm*/
                                 },
                             ]}
                             >
