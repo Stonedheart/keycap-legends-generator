@@ -1,5 +1,5 @@
 export enum KeycapsSelectionActionTypes {
-    selectKeycaps,
-    selectLegends,
-    unselectKeycaps
+    selectKeycaps = "selectKeycaps",
+    selectLegends = "selectLegends",
+    unselectKeycaps = "unselectKeycaps",
 }

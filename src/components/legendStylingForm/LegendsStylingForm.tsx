@@ -51,21 +51,29 @@ const LegendsStylingForm = () => {
 
     return (
         <div className="form-container">
-            <label htmlFor="legendIndex0">legend1</label>
-            <input type="radio" value="0" name="legendIndex" id="legendIndex0" onChange={handleOnSelectRadio} />
-            <label htmlFor="legendIndex1">legend2</label>
-            <input type="radio" value="1" name="legendIndex" id="legendIndex1" onChange={handleOnSelectRadio} />
-            <label htmlFor="allLegends">all</label>
-            <input type="radio" value="" name="legendIndex" id="allLegends" onChange={handleOnSelectRadio} />
+            <div style={{ marginBottom: 4 }}>
+                <label htmlFor="legendIndex0">legend1</label>
+                <input type="radio" value="0" name="legendIndex" id="legendIndex0" onChange={handleOnSelectRadio} />
+            </div>
+            <div style={{ marginBottom: 4 }}>
+                <label htmlFor="legendIndex1">legend2</label>
+                <input type="radio" value="1" name="legendIndex" id="legendIndex1" onChange={handleOnSelectRadio} />
+            </div>
+            <div style={{ marginBottom: 8 }}>
+                <label htmlFor="allLegends">all</label>
+                <input type="radio" value="" name="legendIndex" id="allLegends" onChange={handleOnSelectRadio} defaultChecked />
+            </div>
             <FontFamilySelect onSelect={handleFontFamilySelection} />
-            <label htmlFor="fontSize">Provide font size: </label>
-            <input
-                type="number"
-                id="fontSize"
-                onChange={handleFontSizeChange}
-                style={{ marginBottom: 8 }}
-                value={fontSizeInputValue}
-            />
+            <div style={{ marginTop: 8 }}>
+                <label htmlFor="fontSize">Provide font size: </label>
+                <input
+                    type="number"
+                    id="fontSize"
+                    onChange={handleFontSizeChange}
+                    style={{ marginBottom: 8, marginLeft: 4 }}
+                    value={fontSizeInputValue}
+                />
+            </div>
             <div style={{ marginBottom: 8 }}>
                 <label htmlFor="uppercase">Make upppercase</label>
                 <input
@@ -75,11 +83,12 @@ const LegendsStylingForm = () => {
                 />
             </div>
             <LegendPositioning onLegendPositionClick={handleOnLegendPositionClick} />
-            <label htmlFor="colorPicker">
-                Choose color:
-            </label>
-            <input type="color" id="colorPicker" onChange={handleColorChange} />
+            <div style={{ marginTop: 8 }}>
+                <label htmlFor="colorPicker">Choose color:</label>
+                <input type="color" id="colorPicker" onChange={handleColorChange} style={{ marginLeft: 4 }}/>
+            </div>
         </div>
+
     );
 };
 

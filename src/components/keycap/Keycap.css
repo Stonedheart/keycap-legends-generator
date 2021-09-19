@@ -1,20 +1,22 @@
 .keycap-shape {
     display: flex;
-    width: calc(45.6px - 7.6px); /*~12mm - ~2mm*/
-    height: calc(45.6px - 3.8px);
-    padding: 7.6px; /*~2mm*/
     user-select: none;
-    border-radius: 10px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .keycap {
-    border: solid 1px grey;
+    height: calc(45.6px - 7.6px); /*~12mm - ~2mm*/
     position: relative;
+    border: solid 1px grey;
+    margin: 1px;
 }
 
 .legend {
+    padding: 7.6px; /*~2mm*/
     position: absolute;
     top: 0;
-    left: 0
+    left: 0;
+    width: inherit;
+    height: inherit;
 }

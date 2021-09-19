@@ -1,8 +1,8 @@
 export enum LegendStylingActionTypes {
-    setFontSize,
-    setFontFamily,
-    setTextTransform,
-    setJustifyLegend,
-    setAlignLegend,
-    setFontColor,
+    setFontSize = "setFontSize",
+    setFontFamily = "setFontFamily",
+    setTextTransform = "setTextTransform",
+    setJustifyLegend = "setJustifyLegend",
+    setAlignLegend = "setAlignLegend",
+    setFontColor = "setFontColor",
 }
