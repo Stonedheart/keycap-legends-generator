@@ -8,14 +8,12 @@ Current functionalities:\
 -select legend position on keycap\
 -operate on all keycaps\
 -select keycaps with click or multiple at once with click and drag\
--for now only alphanumeric keys available
+-export pdf
 
 To do:\
--add rest of keys\
 -add possibility to use gradient as a font color\
--add possiblity to add images\
+-add possiblity to use images as a legends\
 -add another fonts\
--export template as .pdf or .png
 
 
 For now I added fonts used in both part of Hotline Miami, they're listed in here: https://steamcommunity.com/app/274170/discussions/0/617330406652065221/.
