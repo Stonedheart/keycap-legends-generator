@@ -12,7 +12,7 @@ import { KeycapsSelectionActionTypes } from "../models/keycapsSelection/keycapsS
 
 
 const defaultLegendStyleState: LegendStyle = {
-    fontFamily: "sans-serif",
+    fontFamily: "JetBrainsMono-Regular",
     fontSize: DEFAULT_FONT_SIZE,
     textTransform: "lowercase",
     alignItems: FlexPositions.flexStart,

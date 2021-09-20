@@ -13,6 +13,11 @@ code {
 }
 
 @font-face {
+    font-family: 'JetBrainsMono-Regular';
+    src: local('JetBrainsMono-Regular'), url(./fonts/JetBrainsMono-Regular.ttf) format('truetype');
+}
+
+@font-face {
     font-family: 'Beyond';
     src: local('Beyond'), url(./fonts/Beyond.ttf) format('truetype');
 }
@@ -43,8 +48,8 @@ code {
 }
 
 @font-face {
-    font-family: 'DiscoDuck-Left-Italic';
-    src: local('DiscoDuck-Left-Italic'), url(./fonts/discoduckleft.ttf) format('truetype');
+    font-family: 'DiscoDuck-Left';
+    src: local('DiscoDuck-Left'), url(./fonts/discoduckleft.ttf) format('truetype');
 }
 
 @font-face {
@@ -124,13 +129,18 @@ code {
 }
 
 @font-face {
+    font-family: 'DiscoDuck-Super-Italic';
+    src: local('DiscoDuck-Super-Italic'), url(./fonts/discoducksuperital.ttf) format('truetype');
+}
+
+@font-face {
     font-family: 'Friday13th-Bonus';
-    src: local('Friday13th-Bonus'), url(./fonts/Friday13\ Bonus\ NFI.ttf) format('truetype');
+    src: local('Friday13th-Bonus'), url(./fonts/Friday13\ Bonus\ NFI.otf) format('opentype');
 }
 
 @font-face {
     font-family: 'Friday13th-SH';
-    src: local('Friday13th-SH'), url(./fonts/Friday13SH.ttf) format('truetype');
+    src: local('Friday13th-SH'), url(./fonts/Friday13SH.otf) format('opentype');
 }
 
 @font-face {

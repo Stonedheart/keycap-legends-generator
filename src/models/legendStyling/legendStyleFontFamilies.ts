@@ -1,4 +1,4 @@
-export const defaultFontFamily = "sans-serif";
+export const defaultFontFamily = "JetBrainsMono-Regular";
 
 export const fontFamilyNames = [
     defaultFontFamily,
@@ -8,7 +8,7 @@ export const fontFamilyNames = [
     'D3Digitalism-Italic',
     'DiscoDuck',
     'DiscoDuck-Italic',
-    'DiscoDuck-Left-Italic',
+    'DiscoDuck-Left',
     'DiscoDuck-3d',
     'DiscoDuck-3d-Italic',
     'DiscoDuck-Chrome',
@@ -24,6 +24,7 @@ export const fontFamilyNames = [
     'DiscoDuck-Outline',
     'DiscoDuck-Outline-Italic',
     'DiscoDuck-Semi-Italic',
+    'DiscoDuck-Super-Italic',
     'Friday13th-Bonus',
     'Friday13th-SH',
     'Friday13th-v12',
