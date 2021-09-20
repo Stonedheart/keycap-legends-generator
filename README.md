@@ -8,14 +8,12 @@ Current functionalities:\
 -select legend position on keycap\
 -operate on all keycaps\
 -select keycaps with click or multiple at once with click and drag\
--for now only alphanumeric keys available
+-export pdf
 
 To do:\
--add rest of keys\
 -add possibility to use gradient as a font color\
--add possiblity to add images\
+-add possiblity to use images as a legends\
 -add another fonts\
--export template as .pdf or .png
 
 
 For now I added fonts used in both part of Hotline Miami, they're listed in here: https://steamcommunity.com/app/274170/discussions/0/617330406652065221/.
@@ -25,3 +23,7 @@ Project created with Create React App (https://github.com/facebook/create-react-
 ![Screenshot 2021-06-29 at 09 10 17](https://user-images.githubusercontent.com/22979111/123753217-e48e1c00-d8b9-11eb-9919-a5a76ab11068.png)
 
 ![Screenshot 2021-06-29 at 09 13 15](https://user-images.githubusercontent.com/22979111/123753543-43ec2c00-d8ba-11eb-847f-73add6b297ae.png)
+
+Updated:
+![obraz](https://user-images.githubusercontent.com/22979111/133942402-4a29b188-d79b-4b37-8a0a-7db75815133e.png)
+
