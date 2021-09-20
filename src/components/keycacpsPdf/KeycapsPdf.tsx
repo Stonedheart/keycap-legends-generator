@@ -1,9 +1,7 @@
-import { Page, Document, View, StyleSheet, Font, Text } from '@react-pdf/renderer';
+import { Page, Document, View, StyleSheet, Text } from '@react-pdf/renderer';
 import { Keycap } from '../../models/keycap/keycap';
-import Justice from "../../fonts/justice.ttf";
+import "./fontsRegistration.ts";
 
-
-Font.register({ family: 'Justice', format: "truetype", src: Justice });
 
 interface Props {
     keycaps: Keycap[];
