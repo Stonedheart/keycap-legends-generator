@@ -1,4 +1,5 @@
 import { Keycap as KeycapModel } from '../../models/keycap/keycap';
+import Legend from '../legend/Legend';
 
 import "./Keycap.css";
 
@@ -28,13 +29,7 @@ const Keycap = ({
             onMouseUp={onMouseUp}
         >
             {legends.map((legend, index) => (
-                <div
-                    key={index}
-                    className="keycap-shape legend"
-                    style={legend.styles}
-                >
-                    {legend.glyph}
-                </div>
+                <Legend key={index} glyph={legend}/>
             ))}
         </div>
     );
