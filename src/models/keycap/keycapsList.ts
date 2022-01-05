@@ -65,8 +65,8 @@ export const keycapsList = [
     },
     {
         legends: ["r"],
-        size: 
-        1},
+        size: 1
+    },
     {
         legends: ["t"],
         size: 1
