@@ -1,7 +1,5 @@
-import { Legend } from "../legend";
-
 export interface Keycap {
-    legends: Legend[];
+    legends: string[];
     size: number;
     isSelected: boolean;
 }

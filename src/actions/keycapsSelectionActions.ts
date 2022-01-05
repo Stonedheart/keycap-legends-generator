@@ -5,11 +5,6 @@ export const selectKeycaps = (keycapsIndexes: number[]) => ({
     payload: keycapsIndexes
 });
 
-export const selectLegends = (legendsIndexes: number[]) => ({
-    type: KeycapsSelectionActionTypes.selectLegends,
-    payload: legendsIndexes
-});
-
 export const unselectKeycaps = (keycapsIndexes: number[]) => ({
     type: KeycapsSelectionActionTypes.unselectKeycaps,
     payload: keycapsIndexes
