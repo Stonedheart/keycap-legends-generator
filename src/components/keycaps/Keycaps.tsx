@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import { Keycap as KeycapModel } from '../../models/keycap/keycap';
 import { selectKeycaps, unselectKeycaps } from '../../actions/keycapsSelectionActions';
 import Keycap from '../keycap/Keycap';
 import "./Keycaps.css";
 import { useKeycapsContext } from '../../contexts/keycapsContext';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import KeycapsPdf from '../keycacpsPdf/KeycapsPdf';
 
 

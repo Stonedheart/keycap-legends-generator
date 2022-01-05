@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { selectLegends } from '../../actions/keycapsSelectionActions';
+import { selectLegends } from '../../actions/legendsActions';
 import {
     setJustifyLegend,
     setAlignLegend,
@@ -9,6 +9,7 @@ import {
     setFontColor,
 } from '../../actions/legendStylingActions';
 import { useKeycapsContext } from '../../contexts/keycapsContext';
+import { useLegendsContext } from '../../contexts/legendsContext';
 import { DEFAULT_FONT_SIZE } from '../../models/shared/defaultFontSize';
 import { FlexPositions } from '../../models/shared/flexPositions';
 import FontFamilySelect from './FontFamilySelect';
@@ -18,7 +19,8 @@ import "./LegendsStylingForm.css";
 
 
 const LegendsStylingForm = () => {
-    const { dispatch } = useKeycapsContext();
+    const { dispatch } = useLegendsContext();
+    const { keycaps } = useKeycapsContext();
     const [fontSizeInputValue, setFontSizeInputValue] = useState(DEFAULT_FONT_SIZE);
 
     const handleOnLegendPositionClick = (justify: FlexPositions, align: FlexPositions) => {
@@ -31,8 +33,12 @@ const LegendsStylingForm = () => {
     };
 
     const handleOnSelectRadio = (event:  ChangeEvent<HTMLInputElement>) => {
-        const indexes = event.target.value ? [parseInt(event.target.value)] : []
-        dispatch(selectLegends(indexes));
+        const keycapsWithLegends = keycaps.filter(keycap => keycap.legends.length);
+        let selectedKeycaps = keycapsWithLegends.filter(keycap => keycap.isSelected);
+        if (!selectedKeycaps.length) {
+            selectedKeycaps = keycapsWithLegends
+        }
+        dispatch(selectLegends(event.target.value, selectedKeycaps));
     };
 
     const handleFontSizeChange = (event: ChangeEvent<HTMLInputElement>) => {

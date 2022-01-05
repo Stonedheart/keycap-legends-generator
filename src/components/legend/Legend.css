@@ -1,0 +1,8 @@
+.legend {
+    padding: 7.6px; /*~2mm*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+}
